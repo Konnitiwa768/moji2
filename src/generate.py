@@ -31,11 +31,11 @@ for fontfamily in fontfamily:
     # フォントに対応する関数を引っぱってくる形でグリフをいじりたい……どうやって？
 
     # フォントを生成する先のフォルダをつくっておく
-    if os.path.isdir("out") == False:
+    if not os.path.isdir("out"):
         os.mkdir("out")
-    if os.path.isdir("out/ttf") == False:
+    if not os.path.isdir("out/ttf"):
         os.mkdir("out/ttf")
-    if os.path.isdir("out/woff") == False:
+    if not os.path.isdir("out/woff"):
         os.mkdir("out/woff")
 
     # いざ生成！

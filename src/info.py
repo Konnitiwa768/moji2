@@ -24,15 +24,15 @@ class font_info:
 # -------------------------------------------------- インスタンスを作る！ --------------------------------------------------
 
 # フォントの種類
-ex = "example"
+lk = "lakof"
 
 # フォントの太さ
 t = "Thin"
 r = "Regular"
 b = "Bold"
 
-ext = font_info(ex, t)
-exr = font_info(ex, r)
-exb = font_info(ex, b)
+lkt = font_info(lk, t)
+lkr = font_info(lk, r)
+lkb = font_info(lk, b)
 
-fontfamily_list = [ext, exr, exb]
+fontfamily_list = [lkt, lkr, lkb]
