@@ -1,3 +1,7 @@
+# -------------------------------------------------- importゾーン --------------------------------------------------
+
+from lakof.generator import lakof_generator
+
 # -------------------------------------------------- フォントの情報をまとめるためにクラスを作る！ --------------------------------------------------
 
 class font_info:
@@ -12,6 +16,18 @@ class font_info:
     def fontname(self):
         fontname = self.name + "-" + self.weight.lower()
         return fontname
+    
+    # フォントの種類に対応する関数を引っぱってくる
+    def edit_glyph(self, font):
+        if self.name == lk:
+            if self.weight == t:
+                lakof_generator(font, "Thin")
+
+            if self.weight == r:
+                lakof_generator(font, "Regular")
+
+            if self.weight == b:
+                lakof_generator(font, "Bold")
     
     def ttf_path(self):
         ttf_path = "out/ttf/" + self.name + "-" + self.weight.lower() + ".ttf"

@@ -14,21 +14,14 @@ for fontfamily in fontfamily:
 
     font = fontforge.font()
 
+    fontfamily.edit_glyph(font)
+
+    # フォントの情報のいろいろ
     font.familyname = fontfamily.name
     font.fullname = fontfamily.fullname()
     font.fontname = fontfamily.fontname()
     font.weight = fontfamily.weight
     font.copyright = "©2024 hakuxna"
-
-    # aのグリフを適当にいじる
-    glyph = font.createChar(ord("a"), "a")
-    pen = glyph.glyphPen()
-    pen.moveTo((100, 100))
-    pen.lineTo((200, 100))
-    pen.lineTo((200, 200))
-    pen.lineTo((100, 200)) # ちっちゃい正方形
-    pen.closePath()
-    # フォントに対応する関数を引っぱってくる形でグリフをいじりたい……どうやって？
 
     # フォントを生成する先のフォルダをつくっておく
     if not os.path.isdir("out"):
