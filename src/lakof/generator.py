@@ -2,6 +2,9 @@
 
 import fontforge # 相変わらず「インポート "fontforge" を解決できませんでした」と言われる日々（？）
 
+# 相対パスだかなんだかの関係で、componentsの前に . を入れないと「そんなモジュールないよ」って言われる　あとで理解しとく
+from .components import *
+
 # -------------------------------------------------- ここにグリフをいじる機構をつくる予定、実装できるかは知らない！！！！！ --------------------------------------------------
 
 def lakof_generator(font, weight):
@@ -24,20 +27,40 @@ def lakof_generator(font, weight):
     elif weight == "Bold":
         fontweight = 175
 
+    glyph = font.createChar(ord("n"), "n")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fontweight)
+    shortRightVerticalBar(pen, fontweight)
+    shortForwardslashBar(pen, fontweight)
+    bearings(glyph)
+
+    glyph = font.createChar(ord("m"), "m")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fontweight)
+    shortRightVerticalBar(pen, fontweight)
+    shortForwardslashBar(pen, fontweight)
+    bearings(glyph)
+
     glyph = font.createChar(ord("l"), "l")
     pen = glyph.glyphPen()
-    
-    pen.moveTo((0, 0))
-    pen.lineTo((0, 500))
-    pen.lineTo((fontweight, 500))
-    pen.lineTo((fontweight, 0))
-    pen.closePath()
+    shortVerticalBar(pen, fontweight)
+    shortHorizontalBar(pen, fontweight)
+    bearings(glyph)
 
-    pen.moveTo((0, 0))
-    pen.lineTo((0, fontweight))
-    pen.lineTo((400, fontweight))
-    pen.lineTo((400, 0))
-    pen.closePath()
+    glyph = font.createChar(ord("x"), "x")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fontweight)
+    shortBottomHorizontalBar(pen, fontweight)
+    bearings(glyph)
 
-    glyph.left_side_bearing = 50
-    glyph.right_side_bearing = 50
+    glyph = font.createChar(ord("a"), "a")
+    pen = glyph.glyphPen()
+    shortLeftCircle(pen, fontweight)
+    shortRightCircle(pen, fontweight)
+    bearings(glyph)
+
+    glyph = font.createChar(ord("0"), "0")
+    pen = glyph.glyphPen()
+    shortBackslashBar(pen, fontweight)
+    shortForwardslashBar(pen, fontweight)
+    bearings(glyph)
