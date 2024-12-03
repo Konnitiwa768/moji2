@@ -101,7 +101,7 @@ def longForwardslashBar(p, w):
     p.closePath()
 
 # 超長斜め棒（／）
-def LongestForwardslashBar(p, w):
+def longestForwardslashBar(p, w):
     p.moveTo((0, uH))
     p.lineTo((sW - w, lH))
     p.lineTo((sW, lH))

@@ -125,11 +125,11 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("."), ".")
     pen = glyph.glyphPen()
-    LongestForwardslashBar(pen, fontweight)
+    longestForwardslashBar(pen, fontweight)
 
     glyph = font.createChar(ord("!"), "!")
     pen = glyph.glyphPen()
-    LongestForwardslashBar(pen, fontweight)
+    longestForwardslashBar(pen, fontweight)
     shortBackslashBar(pen, fontweight)
 
     glyph = font.createChar(ord("'"), "'")
