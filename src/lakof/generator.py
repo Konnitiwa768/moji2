@@ -9,58 +9,55 @@ from .components import *
 
 def lakof_generator(font, weight):
 
-    # フォントの太さは、下の表に対応する値の1/4ってことにする
-    # 100 | Thin
-    # 200 | ExtraLight
-    # 300 | Light
-    # 400 | Regular
-    # 500 | Medium
-    # 600 | SemiBold
-    # 700 | Bold
-    # 800 | Extrabold
-    # 900 | Black
-    # 例えばRegularだったら400 * 1/4 = 100
+    # 太さの設定
     if weight == "Thin":
-        fontweight = 25
+        fontweight = 50
     elif weight == "Regular":
         fontweight = 100
     elif weight == "Bold":
-        fontweight = 175
+        fontweight = 150
+
+    glyph = font.createChar(ord("s"), "s")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fontweight)
+    shortDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("n"), "n")
     pen = glyph.glyphPen()
     shortVerticalBar(pen, fontweight)
     shortRightVerticalBar(pen, fontweight)
     shortForwardslashBar(pen, fontweight)
-    bearings(glyph)
 
     glyph = font.createChar(ord("m"), "m")
     pen = glyph.glyphPen()
     longVerticalBar(pen, fontweight)
     shortRightVerticalBar(pen, fontweight)
     shortForwardslashBar(pen, fontweight)
-    bearings(glyph)
 
     glyph = font.createChar(ord("l"), "l")
     pen = glyph.glyphPen()
     shortVerticalBar(pen, fontweight)
     shortHorizontalBar(pen, fontweight)
-    bearings(glyph)
 
     glyph = font.createChar(ord("x"), "x")
     pen = glyph.glyphPen()
     longVerticalBar(pen, fontweight)
     shortBottomHorizontalBar(pen, fontweight)
-    bearings(glyph)
 
     glyph = font.createChar(ord("a"), "a")
     pen = glyph.glyphPen()
     shortLeftCircle(pen, fontweight)
     shortRightCircle(pen, fontweight)
-    bearings(glyph)
 
     glyph = font.createChar(ord("0"), "0")
     pen = glyph.glyphPen()
     shortBackslashBar(pen, fontweight)
     shortForwardslashBar(pen, fontweight)
-    bearings(glyph)
+
+    # 縦の余白
+    font.ascent = 1050
+
+    # 横の余白
+    for glyph in font.glyphs():
+        glyph.left_side_bearing = 50
+        glyph.right_side_bearing = 50
