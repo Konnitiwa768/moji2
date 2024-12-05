@@ -17,124 +17,155 @@ def lakof_generator(font, weight):
     elif weight == "Bold":
         fontweight = 150
 
+    width = fontweight + 300
+
+    fw = fontweight
+    wd = width
+
     glyph = font.createChar(ord("p"), "p")
     pen = glyph.glyphPen()
-    shortPtail(pen, fontweight)
-    shortRightUpwardCurve(pen, fontweight)
-    shortRightestVerticalBar(pen, fontweight)
 
     glyph = font.createChar(ord("b"), "b")
     pen = glyph.glyphPen()
-    shortBtail(pen, fontweight)
-    shortRightUpwardCurve(pen, fontweight)
-    shortRightestVerticalBar(pen, fontweight)
 
     glyph = font.createChar(ord("k"), "k")
     pen = glyph.glyphPen()
-    shortVerticalBar(pen, fontweight)
-    shortDownwardCurve(pen, fontweight)
-    shortRightDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("g"), "g")
     pen = glyph.glyphPen()
-    shortVerticalBar(pen, fontweight)
-    shortDownwardCurve(pen, fontweight)
-    longRightDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("t"), "t")
     pen = glyph.glyphPen()
-    shortUpwardCurve(pen, fontweight)
-    shortRightUpwardCurve(pen, fontweight)
-    shortRightestVerticalBar(pen, fontweight)
 
     glyph = font.createChar(ord("d"), "d")
     pen = glyph.glyphPen()
-    longUpwardCurve(pen, fontweight)
-    shortRightUpwardCurve(pen, fontweight)
-    shortRightestVerticalBar(pen, fontweight)
 
     glyph = font.createChar(ord("s"), "s")
     pen = glyph.glyphPen()
-    shortVerticalBar(pen, fontweight)
-    shortDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("z"), "z")
     pen = glyph.glyphPen()
-    shortVerticalBar(pen, fontweight)
-    longDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("f"), "f")
     pen = glyph.glyphPen()
-    shortUpwardCurve(pen, fontweight)
-    shortRightVerticalBar(pen, fontweight)
 
     glyph = font.createChar(ord("v"), "v")
     pen = glyph.glyphPen()
-    longUpwardCurve(pen, fontweight)
-    shortRightVerticalBar(pen, fontweight)
 
     glyph = font.createChar(ord("c"), "c")
     pen = glyph.glyphPen()
-    shortUpwardCurve(pen, fontweight)
-    shortRightVerticalBar(pen, fontweight)
-    shortRightDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("q"), "q")
     pen = glyph.glyphPen()
-    longUpwardCurve(pen, fontweight)
-    shortRightVerticalBar(pen, fontweight)
-    longRightDownwardCurve(pen, fontweight)
 
     glyph = font.createChar(ord("n"), "n")
     pen = glyph.glyphPen()
-    shortVerticalBar(pen, fontweight)
-    shortRightVerticalBar(pen, fontweight)
-    shortForwardslashBar(pen, fontweight)
+    shortVerticalBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("m"), "m")
     pen = glyph.glyphPen()
-    longVerticalBar(pen, fontweight)
-    shortRightVerticalBar(pen, fontweight)
-    shortForwardslashBar(pen, fontweight)
+    longVerticalBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("l"), "l")
     pen = glyph.glyphPen()
-    shortVerticalBar(pen, fontweight)
-    shortHorizontalBar(pen, fontweight)
+    shortVerticalBar(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("x"), "x")
     pen = glyph.glyphPen()
-    longVerticalBar(pen, fontweight)
-    shortBottomHorizontalBar(pen, fontweight)
+    longVerticalBar(pen, fw, wd)
+    shortBottomHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("y"), "y")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("w"), "w")
+    pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("a"), "a")
     pen = glyph.glyphPen()
-    leftCircle(pen, fontweight)
-    rightCircle(pen, fontweight)
+
+    glyph = font.createChar(ord("e"), "e")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("i"), "i")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("o"), "o")
+    pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("u"), "u")
     pen = glyph.glyphPen()
-    longForwardslashBar(pen, fontweight)
-    leftCircle(pen, fontweight)
-    rightCircle(pen, fontweight)
 
     glyph = font.createChar(ord("0"), "0")
     pen = glyph.glyphPen()
-    shortBackslashBar(pen, fontweight)
-    shortForwardslashBar(pen, fontweight)
+    shortBackslashBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("1"), "1")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("2"), "2")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("3"), "3")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("4"), "4")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("5"), "5")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("6"), "6")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("7"), "7")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("8"), "8")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("9"), "9")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord(","), ",")
+    pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("."), ".")
     pen = glyph.glyphPen()
-    longestForwardslashBar(pen, fontweight)
+    longestForwardslashBar(pen, fw, wd)
 
     glyph = font.createChar(ord("!"), "!")
     pen = glyph.glyphPen()
-    longestForwardslashBar(pen, fontweight)
-    shortBackslashBar(pen, fontweight)
+    longestForwardslashBar(pen, fw, wd)
+    shortBackslashBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("?"), "?")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("-"), "-")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord(";"), ";")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("<"), "<")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord(">"), ">")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("\""), "\"")
+    pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("'"), "'")
     pen = glyph.glyphPen()
-    apostrophe(pen, fontweight)
+    apostrophe(pen, fw, wd)
 
     # 縦の余白
     font.ascent = 1050
