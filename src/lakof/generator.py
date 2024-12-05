@@ -114,9 +114,9 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("u"), "u")
     pen = glyph.glyphPen()
+    longForwardslashBar(pen, fontweight)
     leftCircle(pen, fontweight)
     rightCircle(pen, fontweight)
-    longForwardslashBar(pen, fontweight)
 
     glyph = font.createChar(ord("0"), "0")
     pen = glyph.glyphPen()

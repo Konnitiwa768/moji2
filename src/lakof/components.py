@@ -130,8 +130,12 @@ def rightCircle(p, w):
 
 # 短下カーブ
 def shortDownwardCurve(p, w):
+    # p.moveTo((w, sH * 0.9))
+    # p.curveTo(((hW + sW) / 2, sH * 1.1), (sW, sH), (sW, sH * 0.9))
+    # p.lineTo((sW - w, sH * 0.9 - w))
+    # p.curveTo((sW - w, sH * 0.9), (hW, sH), (w, sH * 0.9 - w))
     p.moveTo((w, sH * 0.9))
-    p.curveTo(((hW + sW) / 2, sH * 1.2), (sW, sH), (sW, sH * 0.9))
+    p.curveTo((hW, sH * 1.1), (sW, sH), (sW, sH * 0.9))
     p.lineTo((sW - w, sH * 0.9 - w))
     p.curveTo((sW - w, sH * 0.9), (hW, sH), (w, sH * 0.9 - w))
     p.closePath()
@@ -144,7 +148,7 @@ def shortDownwardCurve(p, w):
 # 長下カーブ
 def longDownwardCurve(p, w):
     p.moveTo((w, sH * 0.9))
-    p.curveTo(((hW + sW) / 2, sH * 1.2), (sW, sH), (sW, sH * 0.9))
+    p.curveTo(((hW + sW) / 2, sH * 1.1), (sW, sH), (sW, sH * 0.9))
     p.lineTo((sW - w, sH * 0.9 - w))
     p.curveTo((sW - w, sH * 0.9), (hW, sH), (w, sH * 0.9 - w))
     p.closePath()
@@ -157,7 +161,7 @@ def longDownwardCurve(p, w):
 # 短下カーブ（右）
 def shortRightDownwardCurve(p, w):
     p.moveTo((sW, sH * 0.9))
-    p.curveTo(((hW + sW) / 2 - w + sW, sH * 1.2), (sW * 2 - w, sH), (sW * 2 - w, sH * 0.9))
+    p.curveTo(((hW + sW) / 2 - w + sW, sH * 1.1), (sW * 2 - w, sH), (sW * 2 - w, sH * 0.9))
     p.lineTo(((sW - w) * 2, sH * 0.9 - w))
     p.curveTo(((sW - w) * 2, sH * 0.9), (hW - w + sW, sH), (sW, sH * 0.9 - w))
     p.closePath()
@@ -170,7 +174,7 @@ def shortRightDownwardCurve(p, w):
 # 長下カーブ（右）
 def longRightDownwardCurve(p, w):
     p.moveTo((sW, sH * 0.9))
-    p.curveTo(((hW + sW) / 2 - w + sW, sH * 1.2), (sW * 2 - w, sH), (sW * 2 - w, sH * 0.9))
+    p.curveTo(((hW + sW) / 2 - w + sW, sH * 1.1), (sW * 2 - w, sH), (sW * 2 - w, sH * 0.9))
     p.lineTo(((sW - w) * 2, sH * 0.9 - w))
     p.curveTo(((sW - w) * 2, sH * 0.9), (hW - w + sW, sH), (sW, sH * 0.9 - w))
     p.closePath()
@@ -183,7 +187,7 @@ def longRightDownwardCurve(p, w):
 # 短上カーブ
 def shortUpwardCurve(p, w):
     p.moveTo((sW - w, sH * 0.1))
-    p.curveTo((hW / 2, sH * -0.2), (0, 0), (0, sH * 0.1))
+    p.curveTo((hW / 2, sH * -0.1), (0, 0), (0, sH * 0.1))
     p.lineTo((w, sH * 0.1 + w))
     p.curveTo((w, sH * 0.1), (hW, 0), (sW - w, sH * 0.1 + w))
     p.closePath()
@@ -196,7 +200,7 @@ def shortUpwardCurve(p, w):
 # 長上カーブ
 def longUpwardCurve(p, w):
     p.moveTo((sW - w, sH * 0.1))
-    p.curveTo((hW / 2, sH * -0.2), (0, 0), (0, sH * 0.1))
+    p.curveTo((hW / 2, sH * -0.1), (0, 0), (0, sH * 0.1))
     p.lineTo((w, sH * 0.1 + w))
     p.curveTo((w, sH * 0.1), (hW, 0), (sW - w, sH * 0.1 + w))
     p.closePath()
@@ -209,7 +213,7 @@ def longUpwardCurve(p, w):
 # 短上カーブ（右）
 def shortRightUpwardCurve(p, w):
     p.moveTo(((sW - w) * 2, sH * 0.1))
-    p.curveTo((hW / 2 - w + sW, sH * -0.2), (sW - w, 0), (sW - w, sH * 0.1))
+    p.curveTo((hW / 2 - w + sW, sH * -0.1), (sW - w, 0), (sW - w, sH * 0.1))
     p.lineTo((sW, sH * 0.1 + w))
     p.curveTo((sW, sH * 0.1), (hW - w + sW, 0), ((sW - w) * 2, sH * 0.1 + w))
     p.closePath()
