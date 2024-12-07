@@ -51,16 +51,16 @@ def shortRightVerticalBar(p, fw, wd):
 def shortConnectcurveBar(p, fw, wd):
     p.moveTo((0, 0))
     p.lineTo((0, he))
-    p.lineTo((fw * 0.8, he))
-    p.lineTo((fw, he * 0.9))
+    p.lineTo((fw * 0.9, he))
+    p.lineTo((fw, ha(he) + fw))
     p.lineTo((fw, 0))
     p.closePath()
 
 # 短カーブ接続用縦棒（右）
 def shortRightConnectcurveBar(p, fw, wd):
     p.moveTo((wd - fw, he))
-    p.lineTo((wd - fw, he * 0.1))
-    p.lineTo((wd - fw * 0.8, 0))
+    p.lineTo((wd - fw, ha(he) - fw))
+    p.lineTo((wd - fw * 0.9, 0))
     p.lineTo((wd, 0))
     p.lineTo((wd, he))
     p.closePath()
@@ -68,11 +68,11 @@ def shortRightConnectcurveBar(p, fw, wd):
 # 短両カーブ接続用縦棒
 def shortRightConnectcurvesBar(p, fw, wd):
     p.moveTo((wd - fw, he))
-    p.lineTo((wd - fw, he * 0.1))
-    p.lineTo((wd - fw * 0.8, 0))
+    p.lineTo((wd - fw, ha(he) - fw))
+    p.lineTo((wd - fw * 0.9, 0))
     p.lineTo((wd, 0))
-    p.lineTo((wd, he * 0.9))
-    p.lineTo((wd - fw * 0.2, he))
+    p.lineTo((wd, ha(he) + fw))
+    p.lineTo((wd - fw * 0.1, he))
     p.closePath()
 
 # 短カーブ接続用縦棒（超右）
@@ -133,12 +133,20 @@ def longestForwardslashBar(p, fw, wd):
 
 # 下向きカーブ
 def downwardCurve(p, fw, wd):
-    p.moveTo((fw, he * 0.9))
-    p.lineTo((ha(wd), he * 1.1))
-    p.lineTo((wd, ha(he)))
+    p.moveTo((fw, ha(he) + fw))
+    p.curveTo((fw, he * 0.55 + fw * 0.9), (fw, he), (fw + ha(wd - fw), he))
+    p.curveTo((wd, he), (wd, he * 0.55), (wd, ha(he)))
     p.lineTo((wd - fw, ha(he)))
-    p.curveTo((wd - fw, he * 0.56 - fw * 0.1), (wd - fw, he * 1.1 - fw), (ha(wd), he * 1.1 - fw))
-    p.curveTo((fw, he * 1.1 - fw), (fw, he * 0.9 - fw * 0.9), (fw, he * 0.9 - fw))
+    p.curveTo((wd - fw, ha(he) + (ha(he) - fw) * 0.1), (wd - fw, he - fw), (ha(wd), he - fw))
+    p.curveTo((fw, he - fw), (fw, ha(he) + (ha(he) - fw) * 0.1), (fw, ha(he)))
+    p.closePath()
+
+# 上向きカーブ
+def upwardCurve(p, fw, wd):
+    p.moveTo((100, 100))
+    p.lineTo((100, 200))
+    p.lineTo((200, 200))
+    p.lineTo((200, 100))
     p.closePath()
 
 # 短下向きカーブ用しっぽ
