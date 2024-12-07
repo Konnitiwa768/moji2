@@ -123,6 +123,14 @@ def shortForwardslashBar(p, fw, wd):
     p.lineTo((fw, 0))
     p.closePath()
 
+# 長短斜め棒（／）
+def longForwardslashBar(p, fw, wd):
+    p.moveTo((0, -ha(he)))
+    p.lineTo((wd - fw, he + ha(he)))
+    p.lineTo((wd, he + ha(he)))
+    p.lineTo((fw, -ha(he)))
+    p.closePath()
+
 # 超長斜め棒（／）
 def longestForwardslashBar(p, fw, wd):
     p.moveTo((0, -he))
@@ -141,12 +149,24 @@ def downwardCurve(p, fw, wd):
     p.curveTo((fw, he - fw), (fw, ha(he) + (ha(he) - fw) * 0.1), (fw, ha(he)))
     p.closePath()
 
+# 下向きカーブ（右）
+def rightDownwardCurve(p, fw, wd):
+    p.moveTo((wd, ha(he) + fw))
+    p.curveTo((wd, he * 0.55 + fw * 0.9), (wd, he), (wd + ha(wd - fw), he))
+    p.curveTo((wd * 2 - fw, he), (wd * 2 - fw, he * 0.55), (wd * 2 - fw, ha(he)))
+    p.lineTo((wd * 2 - fw * 2, ha(he)))
+    p.curveTo((wd * 2 - fw * 2, ha(he) + (ha(he) - fw) * 0.1), (wd * 2 - fw * 2, he - fw), (ha(wd) - fw + wd, he - fw))
+    p.curveTo((wd, he - fw), (wd, ha(he) + (ha(he) - fw) * 0.1), (wd, ha(he)))
+    p.closePath()
+
 # 上向きカーブ
 def upwardCurve(p, fw, wd):
-    p.moveTo((100, 100))
-    p.lineTo((100, 200))
-    p.lineTo((200, 200))
-    p.lineTo((200, 100))
+    p.moveTo((wd - fw, ha(he) - fw))
+    p.curveTo((wd - fw, he * 0.45 - fw * 0.9), (wd - fw, 0), (wd - fw - ha(wd - fw), 0))
+    p.curveTo((0, 0), (0, he * 0.45), (0, ha(he)))
+    p.lineTo((fw, ha(he)))
+    p.curveTo((fw, ha(he) - (ha(he) - fw) * 0.1), (fw, fw), (ha(wd), fw))
+    p.curveTo((wd - fw, fw), (wd - fw, ha(he) - (ha(he) - fw) * 0.1), (wd - fw, ha(he)))
     p.closePath()
 
 # 短下向きカーブ用しっぽ
@@ -157,195 +177,115 @@ def shortDownwardTail(p, fw, wd):
     p.lineTo((wd - fw, ha(he)))
     p.closePath()
 
+# 短下向きカーブ用しっぽ（右）
+def shortRightDownwardTail(p, fw, wd):
+    p.moveTo((wd * 2 - fw, ha(he)))
+    p.lineTo((wd * 2 - fw, 0))
+    p.lineTo((wd * 2 - fw * 2, 0))
+    p.lineTo((wd * 2 - fw * 2, ha(he)))
+    p.closePath()
+
+# 短上向きカーブ用しっぽ
+def shortUpwardTail(p, fw, wd):
+    p.moveTo((0, ha(he)))
+    p.lineTo((0, he))
+    p.lineTo((fw, he))
+    p.lineTo((fw, ha(he)))
+    p.closePath()
+
 # 長下向きカーブ用しっぽ
 def longDownwardTail(p, fw, wd):
     p.moveTo((wd, ha(he)))
-    p.lineTo((wd, -he))
-    p.lineTo((wd - fw, -he))
+    p.curveTo((wd, ha(he) - he * 0.15), (wd, -he), (wd + ha(fw), -he))
+    p.lineTo((wd - ha(fw), -he))
+    p.curveTo((wd - fw, -he), (wd - fw, -he * 0.55), (wd - fw, -ha(he)))
     p.lineTo((wd - fw, ha(he)))
+    p.closePath()
+
+# 長下向きカーブ用しっぽ（右）
+def longRightDownwardTail(p, fw, wd):
+    p.moveTo((wd * 2 - fw, ha(he)))
+    p.curveTo((wd * 2 - fw, ha(he) - he * 0.15), (wd * 2 - fw, -he), (wd * 2 - ha(fw), -he))
+    p.lineTo((wd * 2 - fw - ha(fw), -he))
+    p.curveTo((wd * 2 - fw * 2, -he), (wd * 2 - fw * 2, -he * 0.55), (wd * 2 - fw * 2, -ha(he)))
+    p.lineTo((wd * 2 - fw * 2, ha(he)))
+    p.closePath()
+
+# 長上向きカーブ用しっぽ
+def longUpwardTail(p, fw, wd):
+    p.moveTo((0, ha(he)))
+    p.curveTo((0, ha(he) + he * 0.15), (0, db(he)), (-ha(fw), db(he)))
+    p.lineTo((ha(fw), db(he)))
+    p.curveTo((fw, db(he)), (fw, he * 1.55), (fw, he + ha(he)))
+    p.lineTo((fw, ha(he)))
+    p.closePath()
+
+# 半円（左）
+def leftCircle(p, fw, wd):
+    # 左上
+    p.moveTo((0, ha(he)))
+    p.curveTo((0, he * 0.55), (0, he), (ha(wd), he))
+    p.lineTo((ha(wd), he - fw * 0.8))
+    p.curveTo((fw, he - fw * 0.8), (fw, ha(he) + (ha(he) - fw * 0.8) * 0.1), (fw, ha(he)))
+    p.closePath()
+    # 左下
+    p.moveTo((0, ha(he)))
+    p.curveTo((0, he * 0.45), (0, 0), (ha(wd), 0))
+    p.lineTo((ha(wd), fw * 0.8))
+    p.curveTo((fw, fw * 0.8), (fw, ha(he) - (ha(he) - fw * 0.8) * 0.1), (fw, ha(he)))
+    p.closePath()
+
+# 半円（右）
+def rightCircle(p, fw, wd):
+    # 右上
+    p.moveTo((wd, ha(he)))
+    p.curveTo((wd, he * 0.55), (wd, he), (ha(wd), he))
+    p.lineTo((ha(wd), he - fw * 0.8))
+    p.curveTo((wd - fw, he - fw * 0.8), (wd - fw, ha(he) + (he - fw * 0.8) * 0.1), (wd - fw, ha(he)))
+    p.closePath()
+    # 右下
+    p.moveTo((wd, ha(he)))
+    p.curveTo((wd, he * 0.45), (wd, 0), (ha(wd), 0))
+    p.lineTo((ha(wd), fw * 0.8))
+    p.curveTo((wd - fw, fw * 0.8), (wd - fw, ha(he) - (ha(he) - fw * 0.8) * 0.1), (wd - fw, ha(he)))
+    p.closePath()
+
+# 丸の端（上）
+def upperrightShortestCircle(p, fw, wd):
+    p.moveTo((ha(wd), he))
+    p.curveTo((wd, he), (wd, he * 0.64), (wd, he * 0.6))
+    p.lineTo((wd - fw, he * 0.6))
+    p.curveTo((wd - fw, he * 0.6 + (he - fw * 0.8 - he * 0.6) * 0.1), (wd - fw, he - fw * 0.8), (ha(wd), he - fw * 0.8))
+    p.closePath()
+
+# 丸の端（下）
+def lowerrightShortestCircle(p, fw, wd):
+    p.moveTo((ha(wd), 0))
+    p.curveTo((wd, 0), (wd, he * 0.36), (wd, he * 0.4))
+    p.lineTo((wd - fw, he * 0.4))
+    p.curveTo((wd - fw, he * 0.4 - (he * 0.4 - fw * 0.8) * 0.1), (wd - fw, fw * 0.8), (ha(wd), fw * 0.8))
+    p.closePath()
+
+# セミコロン
+def semicolon(p, fw, wd):
+    p.moveTo((0, he + ha(he)))
+    p.lineTo((0, -ha(he)))
+    p.lineTo((fw, -ha(he)))
+    p.lineTo((fw, he + ha(he)))
+    p.closePath()
+    p.moveTo((fw + 100, he + ha(he)))
+    p.lineTo((fw + 100, -ha(he)))
+    p.lineTo((fw * 2 + 100, -ha(he)))
+    p.lineTo((fw * 2 + 100, he + ha(he)))
     p.closePath()
 
 # アポストロフィ
 def apostrophe(p, fw, wd):
     p.moveTo((0, db(he)))
     p.lineTo((0, he * 1.5))
-    p.lineTo((fw, he * 1.8))
+    p.lineTo((fw, he * 1.6))
     p.lineTo((fw, db(he)))
-
-# # 短縦棒（超右）
-# def shortRightestVerticalBar(p, w):
-#     p.moveTo(((sW - w) * 2, 0))
-#     p.lineTo(((sW - w) * 2, sH))
-#     p.lineTo((sW * 2 - w, sH))
-#     p.lineTo((sW * 2 - w, 0))
-#     p.closePath()
-
-# # 長縦棒
-# def longVerticalBar(p, w):
-#     p.moveTo((0, uH))
-#     p.lineTo((0, sH))
-#     p.lineTo((w, sH))
-#     p.lineTo((w, uH))
-#     p.closePath()
-
-# # 短横棒
-# def shortHorizontalBar(p, w):
-#     p.moveTo((0, 0))
-#     p.lineTo((0, w))
-#     p.lineTo((sW, w))
-#     p.lineTo((sW, 0))
-#     p.closePath()
-
-# # 短横棒（下）
-# def shortBottomHorizontalBar(p, w):
-#     p.moveTo((0, uH))
-#     p.lineTo((0, uH + w))
-#     p.lineTo((sW, uH + w))
-#     p.lineTo((sW, uH))
-#     p.closePath()
-
-# # 短斜め棒（＼）
-# def shortBackslashBar(p, w):
-#     p.moveTo((0, sH))
-#     p.lineTo((w, sH))
-#     p.lineTo((sW, 0))
-#     p.lineTo((sW - w, 0))
-#     p.closePath()
-
-# # 短斜め棒（／）
-# def shortForwardslashBar(p, w):
-#     p.moveTo((0, 0))
-#     p.lineTo((sW - w, sH))
-#     p.lineTo((sW, sH))
-#     p.lineTo((w, 0))
-#     p.closePath()
-
-# # 長斜め棒（／）
-# def longForwardslashBar(p, w):
-#     p.moveTo((0, uH / 2))
-#     p.lineTo((sW - w, (sH + lH) / 2))
-#     p.lineTo((sW, (sH + lH) / 2))
-#     p.lineTo((w, uH / 2))
-#     p.closePath()
-
-# # 超長斜め棒（／）
-# def longestForwardslashBar(p, w):
-#     p.moveTo((0, uH))
-#     p.lineTo((sW - w, lH))
-#     p.lineTo((sW, lH))
-#     p.lineTo((w, uH))
-#     p.closePath()
-
-# # 半円（左）
-# def leftCircle(p, w):
-#     p.moveTo((hW, 0))
-#     p.curveTo((hW / 2, 0), (0, hH / 2), (0, hH))
-#     p.curveTo((0, (hH + sH) / 2), (hW / 2, sH), (hW, sH))
-#     p.lineTo((hW, sH - w))
-#     p.curveTo(((hW + w) / 2, sH - w), (w, (sH - w + hH) / 2), (w , hH))
-#     p.curveTo((w, (hH + w) / 2), ((w + hW) / 2, w), (hW, w))
-#     p.closePath()
-
-# # 半円（右）
-# def rightCircle(p, w):
-#     p.moveTo((hW, 0))
-#     p.curveTo(((hW + sW) / 2, 0), (sW, hH / 2), (sW, hH))
-#     p.curveTo((sW, (hH + sH) / 2), ((sW + hW) / 2, sH), (hW, sH))
-#     p.lineTo((hW, sH - w))
-#     p.curveTo(((sW - w + hW) / 2, sH - w), (sW - w, (sH - w + hH) / 2), (sW - w, hH))
-#     p.curveTo((sW - w, (hH + w) / 2), ((sW - w + hW) / 2, w), (hW, w))
-#     p.closePath()
-
-# # 短下カーブ
-# def shortDownwardCurve(p, w):
-#     p.moveTo((w, sH * 0.9))
-#     p.curveTo((hW, sH * 1.1), (sW, sH), (sW, sH * 0.9))
-#     p.lineTo((sW - w, sH * 0.9 - w))
-#     p.curveTo((sW - w, sH * 0.9), (hW, sH), (w, sH * 0.9 - w))
-#     p.closePath()
-#     p.moveTo((sW - w, 0))
-#     p.lineTo((sW - w, sH * 0.9 - w))
-#     p.lineTo((sW, sH * 0.9))
-#     p.lineTo((sW, 0))
-#     p.closePath()
-
-# # 長下カーブ
-# def longDownwardCurve(p, w):
-#     p.moveTo((w, sH * 0.9))
-#     p.curveTo(((hW + sW) / 2, sH * 1.1), (sW, sH), (sW, sH * 0.9))
-#     p.lineTo((sW - w, sH * 0.9 - w))
-#     p.curveTo((sW - w, sH * 0.9), (hW, sH), (w, sH * 0.9 - w))
-#     p.closePath()
-#     p.moveTo((sW, uH))
-#     p.curveTo((sW - w, uH), (sW - w, 0), (sW - w, sH * 0.9 - w))
-#     p.lineTo((sW, sH * 0.9))
-#     p.curveTo((sW, 0), (sW, uH), (sW + w, uH))
-#     p.closePath()
-
-# # 短下カーブ（右）
-# def shortRightDownwardCurve(p, w):
-#     p.moveTo((sW, sH * 0.9))
-#     p.curveTo(((hW + sW) / 2 - w + sW, sH * 1.1), (sW * 2 - w, sH), (sW * 2 - w, sH * 0.9))
-#     p.lineTo(((sW - w) * 2, sH * 0.9 - w))
-#     p.curveTo(((sW - w) * 2, sH * 0.9), (hW - w + sW, sH), (sW, sH * 0.9 - w))
-#     p.closePath()
-#     p.moveTo(((sW - w) * 2, 0))
-#     p.lineTo(((sW - w) * 2, sH * 0.9 - w))
-#     p.lineTo((sW * 2 - w, sH * 0.9))
-#     p.lineTo((sW * 2 - w, 0))
-#     p.closePath()
-
-# # 長下カーブ（右）
-# def longRightDownwardCurve(p, w):
-#     p.moveTo((sW, sH * 0.9))
-#     p.curveTo(((hW + sW) / 2 - w + sW, sH * 1.1), (sW * 2 - w, sH), (sW * 2 - w, sH * 0.9))
-#     p.lineTo(((sW - w) * 2, sH * 0.9 - w))
-#     p.curveTo(((sW - w) * 2, sH * 0.9), (hW - w + sW, sH), (sW, sH * 0.9 - w))
-#     p.closePath()
-#     p.moveTo((sW * 2 - w, uH))
-#     p.curveTo(((sW - w) * 2, uH), ((sW - w) * 2, 0), ((sW - w) * 2, sH * 0.9 - w))
-#     p.lineTo((sW * 2 - w, sH * 0.9))
-#     p.curveTo((sW * 2 - w, 0), (sW * 2 - w, uH), (sW * 2, uH))
-#     p.closePath()
-
-# # 短上カーブ
-# def shortUpwardCurve(p, w):
-#     p.moveTo((sW - w, sH * 0.1))
-#     p.curveTo((hW / 2, sH * -0.1), (0, 0), (0, sH * 0.1))
-#     p.lineTo((w, sH * 0.1 + w))
-#     p.curveTo((w, sH * 0.1), (hW, 0), (sW - w, sH * 0.1 + w))
-#     p.closePath()
-#     p.moveTo((w, sH))
-#     p.lineTo((w, sH * 0.1 + w))
-#     p.lineTo((0, sH * 0.1))
-#     p.lineTo((0, sH))
-#     p.closePath()
-
-# # 長上カーブ
-# def longUpwardCurve(p, w):
-#     p.moveTo((sW - w, sH * 0.1))
-#     p.curveTo((hW / 2, sH * -0.1), (0, 0), (0, sH * 0.1))
-#     p.lineTo((w, sH * 0.1 + w))
-#     p.curveTo((w, sH * 0.1), (hW, 0), (sW - w, sH * 0.1 + w))
-#     p.closePath()
-#     p.moveTo((0, lH))
-#     p.curveTo((w, lH), (w, sH), (w, sH * 0.1 + w))
-#     p.lineTo((0, sH * 0.1))
-#     p.curveTo((0, sH), (0, lH), (-w, lH))
-#     p.closePath()
-
-# # 短上カーブ（右）
-# def shortRightUpwardCurve(p, w):
-#     p.moveTo(((sW - w) * 2, sH * 0.1))
-#     p.curveTo((hW / 2 - w + sW, sH * -0.1), (sW - w, 0), (sW - w, sH * 0.1))
-#     p.lineTo((sW, sH * 0.1 + w))
-#     p.curveTo((sW, sH * 0.1), (hW - w + sW, 0), ((sW - w) * 2, sH * 0.1 + w))
-#     p.closePath()
-#     p.moveTo((sW, sH))
-#     p.lineTo((sW, sH * 0.1 + w))
-#     p.lineTo((sW - w, sH * 0.1))
-#     p.lineTo((sW - w, sH))
-#     p.closePath()
+    p.closePath()
 
 # # p用のしっぽ
 # def shortPtail(p, w):
@@ -363,12 +303,4 @@ def apostrophe(p, fw, wd):
 #     p.curveTo((sW, 0), (w * 2, uH), (w, uH))
 #     p.closePath()
 
-# # アポストロフィ
-# def apostrophe(p, w):
-#     p.moveTo(0, lH)
-#     p.lineTo(0, (sH + lH) / 2)
-#     p.lineTo(w, lH * 0.8)
-#     p.lineTo(w, lH)
-
-# （……a、左右でぶった切られてるしなんかスリムじゃない…………？）
 # （……u、円と斜線が合わさって大変なことになってる？）
