@@ -31,8 +31,6 @@ def av(number1, number2):
 
 # 名前は、「長さ, 位置, 形状, 種類」の順に統一！
 
-# 書  き  換  え  ま  す（T_T）
-
 # 短縦棒
 def shortVerticalBar(p, fw, wd):
     p.moveTo((0, 0))
@@ -47,6 +45,42 @@ def shortRightVerticalBar(p, fw, wd):
     p.lineTo((wd - fw, he))
     p.lineTo((wd, he))
     p.lineTo((wd, 0))
+    p.closePath()
+
+# 短カーブ接続用縦棒
+def shortConnectcurveBar(p, fw, wd):
+    p.moveTo((0, 0))
+    p.lineTo((0, he))
+    p.lineTo((fw * 0.8, he))
+    p.lineTo((fw, he * 0.9))
+    p.lineTo((fw, 0))
+    p.closePath()
+
+# 短カーブ接続用縦棒（右）
+def shortRightConnectcurveBar(p, fw, wd):
+    p.moveTo((wd - fw, he))
+    p.lineTo((wd - fw, he * 0.1))
+    p.lineTo((wd - fw * 0.8, 0))
+    p.lineTo((wd, 0))
+    p.lineTo((wd, he))
+    p.closePath()
+
+# 短両カーブ接続用縦棒
+def shortRightConnectcurvesBar(p, fw, wd):
+    p.moveTo((wd - fw, he))
+    p.lineTo((wd - fw, he * 0.1))
+    p.lineTo((wd - fw * 0.8, 0))
+    p.lineTo((wd, 0))
+    p.lineTo((wd, he * 0.9))
+    p.lineTo((wd - fw * 0.2, he))
+    p.closePath()
+
+# 短カーブ接続用縦棒（超右）
+def shortRightestConnectcurveBar(p, fw, wd):
+    p.moveTo((100, 100))
+    p.lineTo((100, 200))
+    p.lineTo((200, 200))
+    p.lineTo((200, 100))
     p.closePath()
 
 # 長縦棒
@@ -95,6 +129,32 @@ def longestForwardslashBar(p, fw, wd):
     p.lineTo((wd - fw, db(he)))
     p.lineTo((wd, db(he)))
     p.lineTo((fw, -he))
+    p.closePath()
+
+# 下向きカーブ
+def downwardCurve(p, fw, wd):
+    p.moveTo((fw, he * 0.9))
+    p.lineTo((ha(wd), he * 1.1))
+    p.lineTo((wd, ha(he)))
+    p.lineTo((wd - fw, ha(he)))
+    p.curveTo((wd - fw, he * 0.56 - fw * 0.1), (wd - fw, he * 1.1 - fw), (ha(wd), he * 1.1 - fw))
+    p.curveTo((fw, he * 1.1 - fw), (fw, he * 0.9 - fw * 0.9), (fw, he * 0.9 - fw))
+    p.closePath()
+
+# 短下向きカーブ用しっぽ
+def shortDownwardTail(p, fw, wd):
+    p.moveTo((wd, ha(he)))
+    p.lineTo((wd, 0))
+    p.lineTo((wd - fw, 0))
+    p.lineTo((wd - fw, ha(he)))
+    p.closePath()
+
+# 長下向きカーブ用しっぽ
+def longDownwardTail(p, fw, wd):
+    p.moveTo((wd, ha(he)))
+    p.lineTo((wd, -he))
+    p.lineTo((wd - fw, -he))
+    p.lineTo((wd - fw, ha(he)))
     p.closePath()
 
 # アポストロフィ

@@ -5,7 +5,7 @@ import fontforge # 相変わらず「インポート "fontforge" を解決でき
 # 相対パスだかなんだかの関係で、componentsの前に . を入れないと「そんなモジュールないよ」って言われる　あとで理解しとく
 from .components import *
 
-# -------------------------------------------------- ここにグリフをいじる機構をつくる予定、実装できるかは知らない！！！！！ --------------------------------------------------
+# -------------------------------------------------- グリフいじり（？）をする！ --------------------------------------------------
 
 def lakof_generator(font, weight):
 
@@ -22,6 +22,7 @@ def lakof_generator(font, weight):
     fw = fontweight
     wd = width
 
+    # lakof/componentsの部品を使ってグリフをいじる！
     glyph = font.createChar(ord("p"), "p")
     pen = glyph.glyphPen()
 
@@ -30,33 +31,47 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("k"), "k")
     pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("g"), "g")
     pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("t"), "t")
     pen = glyph.glyphPen()
+    shortRightestConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("d"), "d")
     pen = glyph.glyphPen()
+    shortRightestConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("s"), "s")
     pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    shortDownwardTail(pen, fw, wd)
 
     glyph = font.createChar(ord("z"), "z")
     pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    longDownwardTail(pen, fw, wd)
 
     glyph = font.createChar(ord("f"), "f")
     pen = glyph.glyphPen()
+    shortRightConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("v"), "v")
     pen = glyph.glyphPen()
+    shortRightConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("c"), "c")
     pen = glyph.glyphPen()
+    shortRightConnectcurvesBar(pen, fw, wd)
 
     glyph = font.createChar(ord("q"), "q")
     pen = glyph.glyphPen()
+    shortRightConnectcurvesBar(pen, fw, wd)
 
     glyph = font.createChar(ord("n"), "n")
     pen = glyph.glyphPen()
