@@ -32,17 +32,25 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("k"), "k")
     pen = glyph.glyphPen()
     shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
 
     glyph = font.createChar(ord("g"), "g")
     pen = glyph.glyphPen()
     shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
+    longRightDownwardTail(pen, fw, wd)
 
     glyph = font.createChar(ord("t"), "t")
     pen = glyph.glyphPen()
+    upwardDoublecurve(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
     shortRightestConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("d"), "d")
     pen = glyph.glyphPen()
+    upwardDoublecurve(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
     shortRightestConnectcurveBar(pen, fw, wd)
 
     glyph = font.createChar(ord("s"), "s")
@@ -109,9 +117,15 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("y"), "y")
     pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
+    shortAboveVerticalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("w"), "w")
     pen = glyph.glyphPen()
+    rightCircle(pen, fw, wd)
+    shortestUpperleftCircle(pen, fw, wd)
+    shortBelowVerticalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("a"), "a")
     pen = glyph.glyphPen()
@@ -121,14 +135,20 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("e"), "e")
     pen = glyph.glyphPen()
     leftCircle(pen, fw, wd)
-    upperrightShortestCircle(pen, fw, wd)
-    lowerrightShortestCircle(pen, fw, wd)
+    shortestUpperrightCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
 
     glyph = font.createChar(ord("i"), "i")
     pen = glyph.glyphPen()
+    shortestUpperleftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    iTail(pen, fw, wd)
 
     glyph = font.createChar(ord("o"), "o")
     pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortestCenterHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("u"), "u")
     pen = glyph.glyphPen()
@@ -182,9 +202,12 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("?"), "?")
     pen = glyph.glyphPen()
+    shortCenterVerticalBar(pen, fw, wd)
+    shortCenterHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("-"), "-")
     pen = glyph.glyphPen()
+    shortCenterHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord(";"), ";")
     pen = glyph.glyphPen()
@@ -192,9 +215,11 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("<"), "<")
     pen = glyph.glyphPen()
+    inequalitysign(pen, fw, wd)
 
     glyph = font.createChar(ord(">"), ">")
     pen = glyph.glyphPen()
+    inequalitysign(pen, fw, wd)
 
     glyph = font.createChar(ord("\""), "\"")
     pen = glyph.glyphPen()
@@ -202,8 +227,6 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("'"), "'")
     pen = glyph.glyphPen()
     apostrophe(pen, fw, wd)
-
-    glyph.removeOverlap()
 
     # 縦の余白
     font.ascent = 1050
