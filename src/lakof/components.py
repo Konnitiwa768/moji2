@@ -22,7 +22,7 @@ def ha(number):
     ha = number / 2
     return ha
 
-# 平均値の計算
+# 平均値の計算 ←なくてもいい……？
 def av(number1, number2):
     av = (number1 + number2) / 2
     return av
@@ -252,12 +252,30 @@ def upwardDoublecurve(p, fw, wd):
     p.curveTo((wd * 2 - fw * 2, fw), (wd * 2 - fw * 2, ha(he) - (ha(he) - fw) * 0.1), (wd * 2 -  fw * 2, ha(he)))
     p.closePath()
 
+# シンメトリー上向きカーブ
+def symmetricalCurve(p, fw, wd):
+    p.moveTo((wd - fw, ha(he) - fw))
+    p.curveTo((wd - fw, (ha(he) - fw) * 0.9), (wd - fw, 0), (ha(wd), 0))
+    p.curveTo((fw, 0), (fw, (ha(he) - fw) * 0.9), (fw, ha(he) - fw))
+    p.lineTo((fw, ha(he)))
+    p.curveTo((fw, ha(he) - (ha(he) - fw) * 0.1), (fw, fw), (ha(wd), fw))
+    p.curveTo((wd - fw, fw), (wd - fw, ha(he) - (ha(he) - fw) * 0.1), (wd - fw, ha(he)))
+    p.closePath()
+
 # 短下向きカーブ用しっぽ
 def shortDownwardTail(p, fw, wd):
     p.moveTo((wd, ha(he)))
     p.lineTo((wd, 0))
     p.lineTo((wd - fw, 0))
     p.lineTo((wd - fw, ha(he)))
+    p.closePath()
+
+# 短下向きカーブ用しっぽ（左）
+def shortLeftDownwardTail(p, fw, wd):
+    p.moveTo((fw, ha(he)))
+    p.lineTo((fw, 0))
+    p.lineTo((0, 0))
+    p.lineTo((0, ha(he)))
     p.closePath()
 
 # 短下向きカーブ用しっぽ（右）
@@ -283,6 +301,15 @@ def longDownwardTail(p, fw, wd):
     p.lineTo((wd - ha(fw), -he))
     p.curveTo((wd - fw, -he), (wd - fw, -he * 0.55), (wd - fw, -ha(he)))
     p.lineTo((wd - fw, ha(he)))
+    p.closePath()
+
+# 長下向きカーブ用しっぽ（左）
+def longLeftDownwardTail(p, fw, wd):
+    p.moveTo((fw, ha(he)))
+    p.lineTo((fw, -ha(he)))
+    p.curveTo((fw, -he * 0.55), (fw, -he), (ha(fw), -he))
+    p.lineTo((-ha(fw), -he))
+    p.curveTo((0, -he), (0, ha(he) - he * 0.15), (0, ha(he)))
     p.closePath()
 
 # 長下向きカーブ用しっぽ（右）

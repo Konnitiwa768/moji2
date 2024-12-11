@@ -25,9 +25,17 @@ def lakof_generator(font, weight):
     # lakof/componentsの部品を使ってグリフをいじる！
     glyph = font.createChar(ord("p"), "p")
     pen = glyph.glyphPen()
+    symmetricalCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortLeftDownwardTail(pen, fw, wd)
 
     glyph = font.createChar(ord("b"), "b")
     pen = glyph.glyphPen()
+    symmetricalCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    longLeftDownwardTail(pen, fw, wd)
 
     glyph = font.createChar(ord("k"), "k")
     pen = glyph.glyphPen()
@@ -221,7 +229,10 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     inequalitysign(pen, fw, wd)
 
-    glyph = font.createChar(ord("\""), "\"")
+    glyph = font.createChar(ord("“"), "“")
+    pen = glyph.glyphPen()
+
+    glyph = font.createChar(ord("”"), "”")
     pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("'"), "'")
