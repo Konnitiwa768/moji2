@@ -22,7 +22,7 @@ def lakof_generator(font, weight):
     fw = fontweight
     wd = width
 
-    # lakof/componentsの部品を使ってグリフをいじる！
+    # -------------------------------------------------- 小文字 --------------------------------------------------
     glyph = font.createChar(ord("p"), "p")
     pen = glyph.glyphPen()
     symmetricalCurve(pen, fw, wd)
@@ -121,7 +121,7 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("x"), "x")
     pen = glyph.glyphPen()
     longVerticalBar(pen, fw, wd)
-    shortBottomHorizontalBar(pen, fw, wd)
+    shortBelowHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("y"), "y")
     pen = glyph.glyphPen()
@@ -164,6 +164,149 @@ def lakof_generator(font, weight):
     rightCircle(pen, fw, wd)
     longForwardslashBar(pen, fw, wd)
 
+    # -------------------------------------------------- 一応大文字も --------------------------------------------------
+    glyph = font.createChar(ord("P"), "P")
+    pen = glyph.glyphPen()
+    symmetricalCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortLeftDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("B"), "B")
+    pen = glyph.glyphPen()
+    symmetricalCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    longLeftDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("K"), "K")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("G"), "G")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
+    longRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("T"), "T")
+    pen = glyph.glyphPen()
+    upwardDoublecurve(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortRightestConnectcurveBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("D"), "D")
+    pen = glyph.glyphPen()
+    upwardDoublecurve(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
+    shortRightestConnectcurveBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("S"), "S")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    shortDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("Z"), "Z")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    longDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("F"), "F")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("V"), "V")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("C"), "C")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortRightConnectcurvesBar(pen, fw, wd)
+    rightDownwardCurve(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("Q"), "Q")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
+    shortRightConnectcurvesBar(pen, fw, wd)
+    rightDownwardCurve(pen, fw, wd)
+    longRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("N"), "N")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("M"), "M")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("L"), "L")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("X"), "X")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fw, wd)
+    shortBelowHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("Y"), "Y")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
+    shortAboveVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("W"), "W")
+    pen = glyph.glyphPen()
+    rightCircle(pen, fw, wd)
+    shortestUpperleftCircle(pen, fw, wd)
+    shortBelowVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("A"), "A")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+
+    glyph = font.createChar(ord("E"), "E")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    shortestUpperrightCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
+
+    glyph = font.createChar(ord("I"), "I")
+    pen = glyph.glyphPen()
+    shortestUpperleftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    iTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("O"), "O")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortestCenterHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("U"), "U")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    longForwardslashBar(pen, fw, wd)
+
+    # -------------------------------------------------- 数字 --------------------------------------------------
     glyph = font.createChar(ord("0"), "0")
     pen = glyph.glyphPen()
     shortBackslashBar(pen, fw, wd)
@@ -196,6 +339,7 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("9"), "9")
     pen = glyph.glyphPen()
 
+    # -------------------------------------------------- 約物 --------------------------------------------------
     glyph = font.createChar(ord(","), ",")
     pen = glyph.glyphPen()
 
@@ -231,9 +375,13 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("“"), "“")
     pen = glyph.glyphPen()
+    shortUpperleftVerticalBar(pen, fw, wd)
+    shortAboveHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("”"), "”")
     pen = glyph.glyphPen()
+    shortUpperrightVerticalBar(pen, fw, wd)
+    shortAboveHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("'"), "'")
     pen = glyph.glyphPen()

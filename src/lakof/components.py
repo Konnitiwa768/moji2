@@ -56,12 +56,28 @@ def shortCenterVerticalBar(p, fw, wd):
     p.lineTo((ha(wd) + ha(fw), 0))
     p.closePath()
 
+# 短縦棒（左上）
+def shortUpperleftVerticalBar(p, fw, wd):
+    p.moveTo((0, he))
+    p.lineTo((0, db(he)))
+    p.lineTo((fw, db(he)))
+    p.lineTo((fw, he))
+    p.closePath()
+
 # 短縦棒（上）
 def shortAboveVerticalBar(p, fw, wd):
     p.moveTo((ha(wd) - ha(fw), he - fw * 0.8))
     p.lineTo((ha(wd) - ha(fw), db(he)))
     p.lineTo((ha(wd) + ha(fw), db(he)))
     p.lineTo((ha(wd) + ha(fw), he - fw * 0.8))
+    p.closePath()
+
+# 短縦棒（右上）
+def shortUpperrightVerticalBar(p, fw, wd):
+    p.moveTo((fw + 100, he))
+    p.lineTo((fw + 100, db(he)))
+    p.lineTo((fw * 2 + 100, db(he)))
+    p.lineTo((fw * 2 + 100, he))
     p.closePath()
 
 # 短縦棒（下）
@@ -124,8 +140,16 @@ def shortHorizontalBar(p, fw, wd):
     p.lineTo((wd, 0))
     p.closePath()
 
+# 短横棒（上）
+def shortAboveHorizontalBar(p, fw, wd):
+    p.moveTo((0, db(he) - fw * 0.8))
+    p.lineTo((0, db(he)))
+    p.lineTo((fw * 2 + 100, db(he)))
+    p.lineTo((fw * 2 + 100, db(he) - fw * 0.8))
+    p.closePath()
+
 # 短横棒（下）
-def shortBottomHorizontalBar(p, fw, wd):
+def shortBelowHorizontalBar(p, fw, wd):
     p.moveTo((0, -he))
     p.lineTo((0, -he + fw))
     p.lineTo((wd, -he + fw))
