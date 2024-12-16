@@ -371,6 +371,42 @@ def iTail(p, fw, wd):
     p.curveTo((wd * 0.8, 0), (wd * 0.9, ha(he) - fw * 0.4), (ha(wd), ha(he) - fw * 0.4))
     p.closePath()
 
+# 数字用しっぽ（下）
+def belowNumberTail(p, fw, wd):
+    # 本体
+    p.moveTo((wd - fw, 0))
+    p.lineTo((wd * 1.1, 0))
+    p.lineTo((wd * 1.1, -fw))
+    p.lineTo((wd, -fw))
+    p.curveTo((wd, -fw - (he - fw) * 0.1), (wd, -he), (ha(wd), -he))
+    p.curveTo((0, -he), (0, -ha(he) * 1.1), (0, -ha(he)))
+    p.curveTo((0, -ha(he) * 0.9), (0, 0), (wd - fw, 0))
+    p.closePath()
+    # 穴
+    p.moveTo((wd - fw, -fw))
+    p.curveTo((fw, -fw), (fw, -fw - (ha(he) - fw) * 0.9), (fw, -ha(he)))
+    p.curveTo((fw, -ha(he) - (ha(he) - fw) * 0.1), (fw, -he + fw), (ha(wd), -he + fw))
+    p.curveTo((wd - fw, -he + fw), (wd - fw, -fw - (he - db(fw)) * 0.1), (wd - fw, -fw))
+    p.closePath()
+
+# 数字用しっぽ（上）
+def aboveNumberTail(p, fw, wd):
+    # 本体
+    p.moveTo((fw, he))
+    p.lineTo((-wd * 0.1, he))
+    p.lineTo((-wd * 0.1, he + fw))
+    p.lineTo((0, he + fw))
+    p.curveTo((0, he + fw + (he - fw) * 0.1), (0, db(he)), (ha(wd), db(he)))
+    p.curveTo((wd, db(he)), (wd, he * 1.55), (wd, he * 1.5))
+    p.curveTo((wd, he * 1.45), (wd, he), (fw, he))
+    p.closePath()
+    # 穴
+    p.moveTo((fw, he + fw))
+    p.curveTo((wd - fw, he + fw), (wd - fw, he * 1.5 - (ha(he) - fw) * 0.1), (wd - fw, he * 1.5))
+    p.curveTo((wd - fw, he * 1.5 + (ha(he) - fw) * 0.1), (wd - fw, db(he) - fw), (ha(wd), db(he) - fw))
+    p.curveTo((fw, db(he) - fw), (fw, he + fw + (he - db(fw)) * 0.1), (fw, he + fw))
+    p.closePath()
+
 # 半円（左）
 def leftCircle(p, fw, wd):
     # 左上

@@ -314,30 +314,50 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("1"), "1")
     pen = glyph.glyphPen()
+    shortRightVerticalBar(pen, fw, wd)
+    belowNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("2"), "2")
     pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("3"), "3")
     pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    belowNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("4"), "4")
     pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    shortDownwardTail(pen, fw, wd)
+    belowNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("5"), "5")
     pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("6"), "6")
     pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    aboveNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("7"), "7")
     pen = glyph.glyphPen()
 
     glyph = font.createChar(ord("8"), "8")
     pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    shortDownwardTail(pen, fw, wd)
+    aboveNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("9"), "9")
     pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    aboveNumberTail(pen, fw, wd)
 
     # -------------------------------------------------- 約物 --------------------------------------------------
     glyph = font.createChar(ord(","), ",")
