@@ -319,6 +319,10 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("2"), "2")
     pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
+    belowNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("3"), "3")
     pen = glyph.glyphPen()
@@ -336,6 +340,7 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("5"), "5")
     pen = glyph.glyphPen()
+    triangle(pen, fw, wd)
 
     glyph = font.createChar(ord("6"), "6")
     pen = glyph.glyphPen()
@@ -344,6 +349,10 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("7"), "7")
     pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    aboveNumberTail(pen, fw, wd)
 
     glyph = font.createChar(ord("8"), "8")
     pen = glyph.glyphPen()
@@ -362,6 +371,7 @@ def lakof_generator(font, weight):
     # -------------------------------------------------- 約物 --------------------------------------------------
     glyph = font.createChar(ord(","), ",")
     pen = glyph.glyphPen()
+    comma(pen, fw, wd)
 
     glyph = font.createChar(ord("."), ".")
     pen = glyph.glyphPen()
@@ -407,6 +417,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     apostrophe(pen, fw, wd)
 
+    # -------------------------------------------------- 余白とかの設定 --------------------------------------------------
     # 縦の余白
     font.ascent = 1050
 
@@ -414,3 +425,30 @@ def lakof_generator(font, weight):
     for glyph in font.glyphs():
         glyph.left_side_bearing = 50
         glyph.right_side_bearing = 50
+
+    # -------------------------------------------------- 絶望のカーニング設定 --------------------------------------------------
+    font.addLookup("wipit", "gpos_pair", None, (("wpt",(("latn",("dflt")),)),))
+
+    # xとのカーニングを調整する文字たち
+    nedus_safakesa_te_x = ["p", "P", "k", "K", "g", "G", "t", "T", "d", "D", "s", "S", "z", "Z", "f", "F", "v", "V", "c", "C", "q", "Q", "n", "N", "l", "L", \
+                            "a", "A", "e", "E", "i", "I", "o", "O", "u", "U", \
+                            "0", "5", "6", "7", "8", "9", \
+                            ",", "?", "-", ";", "<", ">", "“", "”", "'"]
+    
+    wipit_xet = []
+    for i in range(102):
+        wipit_xet.append(-fw)
+
+    font.addKerningClass("wipit", "x_nedus", ["x", "X"], nedus_safakesa_te_x, wipit_xet)
+
+    # ,とのカーニングを調整する文字たち
+    nedus_safakesa_te_comma = ["y", "Y", "w", "W", \
+                                "a", "A", "e", "E", "o", "O", "u", "U" \
+                                "6", \
+                                ".", "?", "-", "<", ">", "“", "”", "'"]
+
+    wipit_commat = []
+    for i in range(20):
+        wipit_commat.append(-fw)
+
+    font.addKerningClass("wipit", "nedus_comma", nedus_safakesa_te_comma, [","], wipit_commat)

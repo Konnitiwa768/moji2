@@ -461,6 +461,31 @@ def shortestLowerrightCircle(p, fw, wd):
     p.curveTo((wd - fw, fw * 0.8), (wd - fw, he * 0.4 - (he * 0.4 - fw * 0.8) * 0.1), (wd - fw, he * 0.4))
     p.closePath()
 
+# 三角形
+def triangle(p, fw, wd):
+    # 本体
+    p.moveTo((ha(wd), he))
+    p.lineTo((wd, 0))
+    p.lineTo((0, 0))
+    p.closePath()
+    # 穴
+    p.moveTo((ha(wd), he - fw * 1.3))
+    p.lineTo((fw * 1.2, fw))
+    p.lineTo((wd - fw * 1.2, fw))
+    p.closePath()
+
+# カンマ
+def comma(p, fw, wd):
+    p.moveTo((ha(wd) - ha(fw), he * 0.25))
+    p.lineTo((ha(wd) + ha(fw), he * 0.25))
+    p.lineTo((db(fw), fw * 0.4))
+    p.lineTo((wd, fw * 0.4))
+    p.lineTo((ha(wd) + ha(fw), -he * 0.25))
+    p.lineTo((ha(wd) - ha(fw), -he * 0.25))
+    p.lineTo((wd - db(fw), -fw * 0.4))
+    p.lineTo((0, -fw * 0.4))
+    p.closePath()
+
 # セミコロン
 def semicolon(p, fw, wd):
     p.moveTo((0, -ha(he)))
