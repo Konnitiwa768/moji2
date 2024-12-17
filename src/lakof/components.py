@@ -474,6 +474,14 @@ def triangle(p, fw, wd):
     p.lineTo((wd - fw * 1.2, fw))
     p.closePath()
 
+# 無
+def empty(p, fw, wd):
+    p.moveTo((0, 0))
+    p.lineTo((0, 1))
+    p.lineTo((wd * 0.75, 1))
+    p.lineTo((wd * 0.75, 0))
+    p.closePath()
+
 # カンマ
 def comma(p, fw, wd):
     p.moveTo((ha(wd) - ha(fw), he * 0.25))

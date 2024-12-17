@@ -369,6 +369,10 @@ def lakof_generator(font, weight):
     aboveNumberTail(pen, fw, wd)
 
     # -------------------------------------------------- 約物 --------------------------------------------------
+    glyph = font.createChar(ord(" "), " ")
+    pen = glyph.glyphPen()
+    empty(pen, fw, wd)
+
     glyph = font.createChar(ord(","), ",")
     pen = glyph.glyphPen()
     comma(pen, fw, wd)
