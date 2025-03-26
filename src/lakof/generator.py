@@ -434,25 +434,38 @@ def lakof_generator(font, weight):
     font.addLookup("wipit", "gpos_pair", None, (("wpt",(("latn",("dflt")),)),))
 
     # xとのカーニングを調整する文字たち
-    nedus_safakesa_te_x = ["p", "P", "k", "K", "g", "G", "t", "T", "d", "D", "s", "S", "z", "Z", "f", "F", "v", "V", "c", "C", "q", "Q", "n", "N", "l", "L", \
+    nedus_safakesa_x = ["other", "p", "P", "k", "K", "g", "G", "t", "T", "d", "D", "s", "S", "z", "Z", "f", "F", "v", "V", "c", "C", "q", "Q", "n", "N", "l", "L", \
                             "a", "A", "e", "E", "i", "I", "o", "O", "u", "U", \
                             "0", "5", "6", "7", "8", "9", \
                             ",", "?", "-", ";", "<", ">", "“", "”", "'"]
     
     wipit_xet = []
-    for i in range(102):
+    for i in range(104):
         wipit_xet.append(-fw)
 
-    font.addKerningClass("wipit", "x_nedus", ["x", "X"], nedus_safakesa_te_x, wipit_xet)
+    wipit_xet[0] = 0
+    wipit_xet[52] = 0
+
+    font.addKerningClass("wipit", "x_nedus", ["x", "X"], nedus_safakesa_x, wipit_xet)
 
     # ,とのカーニングを調整する文字たち
-    nedus_safakesa_te_comma = ["y", "Y", "w", "W", \
-                                "a", "A", "e", "E", "o", "O", "u", "U" \
+    nedus_safakesa_comma = ["y", "Y", "w", "W", \
+                                "a", "A", "e", "E", "o", "O", "u", "U", \
                                 "6", \
                                 ".", "?", "-", "<", ">", "“", "”", "'"]
 
     wipit_commat = []
-    for i in range(20):
+    for i in range(42):
         wipit_commat.append(-fw)
 
-    font.addKerningClass("wipit", "nedus_comma", nedus_safakesa_te_comma, [","], wipit_commat)
+    ledixonu = range(42)
+    even_safakesa_comma = []
+
+    for i in ledixonu:
+        if i % 2 == 0:
+            even_safakesa_comma.append(i) #ledixonuから偶数を取り出す
+
+    for i in even_safakesa_comma:
+        wipit_commat[i] = 0
+
+    font.addKerningClass("wipit", "nedus_comma", nedus_safakesa_comma, ["other", ","], wipit_commat)

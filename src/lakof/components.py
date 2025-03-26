@@ -469,7 +469,7 @@ def triangle(p, fw, wd):
     p.lineTo((0, 0))
     p.closePath()
     # 穴
-    p.moveTo((ha(wd), he - fw * 1.3))
+    p.moveTo((ha(wd), he - fw * 1.8))
     p.lineTo((fw * 1.2, fw))
     p.lineTo((wd - fw * 1.2, fw))
     p.closePath()
