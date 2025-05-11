@@ -1,3 +1,3 @@
-# xefasic-dabeka-pal-tofxolfe
+# xefasic-dabeka-pado-tofxolfe
 
-xefasic neda sadabek tofxolfe;. tofxolfe; de'dabek nedo sagek nef "lakof".
+xefasic neda sadabek tofxolfe;. tofxolfe; de'dabeka nedo sagek nef "lakof".
