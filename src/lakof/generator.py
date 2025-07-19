@@ -1,4 +1,4 @@
-from components import (
+from lakof.components import (
     symmetricalCurve, shortRightConnectcurveBar, leftCircle, verticalBar, 
     longRightConnectcurveBar, shortMiddleCurve, wideOval, downwardCurve, 
     shortLeftConnectcurveBar, circleBar, middleCurve, doubleVerticalBar, 
