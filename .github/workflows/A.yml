@@ -1,0 +1,44 @@
+name: Build Font and Push
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-push-font:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Check out code
+        uses: actions/checkout@v3
+
+      - name: 🛠 Install FontForge
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontforge
+
+      - name: 🧱 Build TTF font with FontForge script
+        run: |
+          fontforge -script src/generate.py
+
+      - name: 📝 Commit and push updated font
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 変更をstash（一時退避）
+          git stash push -m "auto-stash before pull"
+
+          # 最新を取り込み
+          git pull --rebase
+
+          # stashを戻す（戻せなくても続行）
+          git stash pop || true
+
+          # 変更をステージしてコミット
+          git add out/ttf/*.ttf
+          git commit -m "🔤 Update TTF font from SVGs" || echo "No changes to commit"
+
+          # push
+          git push
