@@ -1,4 +1,4 @@
-from components import *
+from lakof.components import *
 import fontforge
 
 
