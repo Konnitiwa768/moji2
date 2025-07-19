@@ -33,7 +33,7 @@ def av(number1, number2):
 # とにかく時計回りに描く！
 
 # 短縦棒
-def shortVerticalBar(p, fw, wd):
+def verticalBar(p, fw, wd):
     p.moveTo((0, 0))
     p.lineTo((0, he))
     p.lineTo((fw, he))
