@@ -1,7 +1,7 @@
 # -------------------------------------------------- importゾーン --------------------------------------------------
 
 import fontforge  # fontforge標準インポート
-from .components import *  # components内の全パーツ関数をインポート
+from lakof.components import *  # components内の全パーツ関数をインポート
 
 # -------------------------------------------------- グリフ生成関数 --------------------------------------------------
 
@@ -183,13 +183,18 @@ def lakof_generator(font, weight):
 
     # -- 大文字 A-Z （小文字の複製） --
 
+    # 大文字 A-Z は小文字をアウトラインごと複製
+
     for c in range(ord('A'), ord('Z') + 1):
-        lowercase = chr(c + 32)
-        glyph = font.createChar(c, chr(c))
-        source_glyph = font[lowercase]
-        source_glyph.copy()
-        glyph.paste()
-        glyph.width = source_glyph.width
+    uppercase = font.createChar(c, chr(c))
+    lowercase = font[chr(c + 32)]
+    # 小文字のアウトラインを取得
+    layer = lowercase.foreground
+    # 大文字のグリフにクリアしてからアウトラインをコピー
+    uppercase.clear()
+    # アウトラインを追加（複製）
+    for contour in layer:
+        new_contour = uppercase.foreground.appendContour(contour)
 
     # -- 記号類 --
 
