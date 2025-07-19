@@ -24,7 +24,7 @@ def lakof_generator(font, weight):
     # --- b ---
     glyph = font.createChar(ord("b"), "b")
     pen = glyph.glyphPen()
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
     longRightConnectcurveBar(pen, fw, wd)
     shortMiddleCurve(pen, fw, wd)
 
@@ -66,7 +66,7 @@ def lakof_generator(font, weight):
     # --- h ---
     glyph = font.createChar(ord("h"), "h")
     pen = glyph.glyphPen()
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
     rightConnectcurveBar(pen, fw, wd)
     middleConnectcurveBar(pen, fw, wd)
 
@@ -86,7 +86,7 @@ def lakof_generator(font, weight):
     # --- k ---
     glyph = font.createChar(ord("k"), "k")
     pen = glyph.glyphPen()
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
     rightDownwardCurve(pen, fw, wd)
     upwardCurve(pen, fw, wd)
 
@@ -108,7 +108,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     shortRightConnectcurveBar(pen, fw, wd)
     shortMiddleConnectcurveBar(pen, fw, wd)
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
 
     # --- o ---
     glyph = font.createChar(ord("o"), "o")
@@ -133,7 +133,7 @@ def lakof_generator(font, weight):
     # --- r ---
     glyph = font.createChar(ord("r"), "r")
     pen = glyph.glyphPen()
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
     shortSymmetricalCurve(pen, fw, wd)
     shortRightConnectcurveBar(pen, fw, wd)
 
@@ -147,7 +147,7 @@ def lakof_generator(font, weight):
     # --- t ---
     glyph = font.createChar(ord("t"), "t")
     pen = glyph.glyphPen()
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
     horizontalShortBar(pen, fw, wd)
 
     # --- u ---
@@ -199,7 +199,7 @@ def lakof_generator(font, weight):
     # --- 1 ---
     glyph = font.createChar(ord("1"), "1")
     pen = glyph.glyphPen()
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
 
     # --- 2 ---
     glyph = font.createChar(ord("2"), "2")
@@ -252,7 +252,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     rightDownwardCurve(pen, fw, wd)
     middleCurve(pen, fw, wd)
-    verticalBar(pen, fw, wd)
+    longVerticalBar(pen, fw, wd)
 
     # --- 記号 ---
     def g(c): return font.createChar(ord(c), c).glyphPen()
@@ -266,21 +266,21 @@ def lakof_generator(font, weight):
     g("_"); horizontalShortBar(g("_"), fw, wd); shortBar(g("_"), fw, wd)
     g("("); leftCircle(g("("), fw, wd)
     g(")"); rightConnectcurveBar(g(")"), fw, wd)
-    g("["); verticalBar(g("["), fw, wd); shortBar(g("["), fw, wd)
-    g("]"); verticalBar(g("]"), fw, wd); shortRightConnectcurveBar(g("]"), fw, wd)
+    g("["); longVerticalBar(g("["), fw, wd); shortBar(g("["), fw, wd)
+    g("]"); longVerticalBar(g("]"), fw, wd); shortRightConnectcurveBar(g("]"), fw, wd)
     g("{"); leftDownwardCurve(g("{"), fw, wd); upwardCurve(g("{"), fw, wd)
     g("}"); rightDownwardCurve(g("}"), fw, wd); upwardCurve(g("}"), fw, wd)
     g("@"); wideOval(g("@"), fw, wd); shortBar(g("@"), fw, wd); shortLeftConnectcurveBar(g("@"), fw, wd)
-    g("#"); verticalBar(g("#"), fw, wd); horizontalShortBar(g("#"), fw, wd); doubleVerticalBar(g("#"), fw, wd)
+    g("#"); longVerticalBar(g("#"), fw, wd); horizontalShortBar(g("#"), fw, wd); doubleVerticalBar(g("#"), fw, wd)
     g("$"); shortMiddleConnectcurveBar(g("$"), fw, wd); longBar(g("$"), fw, wd); shortBar(g("$"), fw, wd)
     g("%"); shortBar(g("%"), fw, wd); shortRightConnectcurveBar(g("%"), fw, wd); downwardCurve(g("%"), fw, wd)
     g("&"); wideCircle(g("&"), fw, wd); upwardCurve(g("&"), fw, wd); shortLeftConnectcurveBar(g("&"), fw, wd)
     g("*"); upwardCurve(g("*"), fw, wd); downwardCurve(g("*"), fw, wd); shortBar(g("*"), fw, wd)
-    g("+"); verticalBar(g("+"), fw, wd); horizontalShortBar(g("+"), fw, wd)
+    g("+"); longVerticalBar(g("+"), fw, wd); horizontalShortBar(g("+"), fw, wd)
     g("="); horizontalShortBar(g("="), fw, wd); shortBar(g("="), fw, wd)
     g("/"); rightDownwardCurve(g("/"), fw, wd)
     g("\\"); leftDownwardCurve(g("\\"), fw, wd)
-    g("|"); verticalBar(g("|"), fw, wd)
+    g("|"); longVerticalBar(g("|"), fw, wd)
     g("<"); longLeftConnectcurveBar(g("<"), fw, wd)
     g(">"); longRightConnectcurveBar(g(">"), fw, wd)
     g("\""); shortBar(g("\""), fw, wd); shortBar(g("\""), fw, wd)
