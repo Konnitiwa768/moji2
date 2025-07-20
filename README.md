@@ -1,7 +1,8 @@
 # xefasic-dabeka-pado-tofxolfe
-https://konnitiwa768.github.io/Ustedmm/A.html
+https://konnitiwa768.github.ioA/stedmm/A.html
 https://gemini.google.com
 い
+https://github.com/konnitiwa768/astedmm
 https://scratch.mit.edu
 live at https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/out/ttf/lakof-regular.ttf
 https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/A.html
