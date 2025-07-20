@@ -181,16 +181,167 @@ def lakof_generator(font, weight):
     downwardCurve(pen, fw, wd)
     longDownwardTail(pen, fw, wd)
 
-    # -- 大文字 A-Z （小文字の複製） --
+    # -- 大文字 A-Z --
 
-    for c in range(ord('A'), ord('Z') + 1):
-        lowercase = chr(c + 32)
-        glyph_upper = font.createChar(c, chr(c))
-        glyph_lower = font[lowercase]
-        glyph_upper.clear()  # 既存のアウトラインを消去
-        for contour in glyph_lower.foreground:
-            glyph_upper.foreground.appendContour(contour)
-        glyph_upper.width = glyph_lower.width
+    glyph = font.createChar(ord("A"), "A")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("B"), "B")
+    pen = glyph.glyphPen()
+    symmetricalCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    longLeftDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("C"), "C")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortRightConnectcurvesBar(pen, fw, wd)
+    rightDownwardCurve(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("D"), "D")
+    pen = glyph.glyphPen()
+    upwardDoublecurve(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
+    shortRightestConnectcurveBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("E"), "E")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    shortestUpperrightCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
+
+    glyph = font.createChar(ord("F"), "F")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("G"), "G")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
+    longRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("H"), "H")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("I"), "I")
+    pen = glyph.glyphPen()
+    shortestUpperleftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    iTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("J"), "J")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    longRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("K"), "K")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("L"), "L")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("M"), "M")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("N"), "N")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    shortForwardslashBar(pen, fw, wd)
+    shortRightVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("O"), "O")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortestCenterHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("P"), "P")
+    pen = glyph.glyphPen()
+    symmetricalCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortLeftDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("Q"), "Q")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
+    shortRightConnectcurvesBar(pen, fw, wd)
+    rightDownwardCurve(pen, fw, wd)
+    longRightDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("R"), "R")
+    pen = glyph.glyphPen()
+    shortVerticalBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("S"), "S")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    shortDownwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("T"), "T")
+    pen = glyph.glyphPen()
+    upwardDoublecurve(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
+    shortRightestConnectcurveBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("U"), "U")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    longForwardslashBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("V"), "V")
+    pen = glyph.glyphPen()
+    upwardCurve(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
+    longUpwardTail(pen, fw, wd)
+
+    glyph = font.createChar(ord("W"), "W")
+    pen = glyph.glyphPen()
+    rightCircle(pen, fw, wd)
+    shortestUpperleftCircle(pen, fw, wd)
+    shortBelowVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("X"), "X")
+    pen = glyph.glyphPen()
+    longVerticalBar(pen, fw, wd)
+    shortBelowHorizontalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("Y"), "Y")
+    pen = glyph.glyphPen()
+    leftCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
+    shortAboveVerticalBar(pen, fw, wd)
+
+    glyph = font.createChar(ord("Z"), "Z")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    longDownwardTail(pen, fw, wd)
 
     # -- 記号類 --
 
@@ -217,7 +368,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     circleBar(pen, fw, wd)
 
-    # : (コロン) → ピリオド2つ縦に
+    # : (コロン)
     glyph = font.createChar(ord(":"), "colon")
     pen = glyph.glyphPen()
     pen.moveTo(wd*0.5, 600)
@@ -225,7 +376,7 @@ def lakof_generator(font, weight):
     pen.moveTo(wd*0.5, 300)
     circleBar(pen, fw, wd)
 
-    # ; (セミコロン) → コロン+コンマっぽく
+    # ; (セミコロン)
     glyph = font.createChar(ord(";"), "semicolon")
     pen = glyph.glyphPen()
     pen.moveTo(wd*0.5, 600)
