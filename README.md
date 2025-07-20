@@ -2,6 +2,7 @@
 https://konnitiwa768.github.io/Astedmm/A.html
 
 い
+live at https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/out/ttf/lakof-regular.ttf
 
 https://konnitiwa768.github.io/xefasic-dabeka-pado-tolxolfe/out/ttf/lakof-regular.ttf
 xefasic neda sadabek tofxolfe;. tofxolfe; de'dabeka nedo sagek nef "lakof".
