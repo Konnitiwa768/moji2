@@ -1,9 +1,5 @@
-# -------------------------------------------------- importゾーン --------------------------------------------------
-
-import fontforge  # fontforge標準インポート
-from lakof.components import *  # components内の全パーツ関数をインポート
-
-# -------------------------------------------------- グリフ生成関数 --------------------------------------------------
+import fontforge
+from lakof.components import *
 
 def lakof_generator(font, weight):
 
@@ -38,7 +34,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     upwardCurve(pen, fw, wd)
     shortUpwardTail(pen, fw, wd)
-    shortRightConnectcurvesBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
     rightDownwardCurve(pen, fw, wd)
     shortRightDownwardTail(pen, fw, wd)
 
@@ -111,7 +107,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     leftCircle(pen, fw, wd)
     rightCircle(pen, fw, wd)
-    shortestCenterHorizontalBar(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)  # circleBarの代わりに水平棒で代用
 
     glyph = font.createChar(ord("p"), "p")
     pen = glyph.glyphPen()
@@ -124,7 +120,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     upwardCurve(pen, fw, wd)
     longUpwardTail(pen, fw, wd)
-    shortRightConnectcurvesBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
     rightDownwardCurve(pen, fw, wd)
     longRightDownwardTail(pen, fw, wd)
 
@@ -200,7 +196,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     upwardCurve(pen, fw, wd)
     shortUpwardTail(pen, fw, wd)
-    shortRightConnectcurvesBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
     rightDownwardCurve(pen, fw, wd)
     shortRightDownwardTail(pen, fw, wd)
 
@@ -273,7 +269,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     leftCircle(pen, fw, wd)
     rightCircle(pen, fw, wd)
-    shortestCenterHorizontalBar(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)  # circleBarの代わりに水平棒で代用
 
     glyph = font.createChar(ord("P"), "P")
     pen = glyph.glyphPen()
@@ -286,7 +282,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     upwardCurve(pen, fw, wd)
     longUpwardTail(pen, fw, wd)
-    shortRightConnectcurvesBar(pen, fw, wd)
+    shortRightConnectcurveBar(pen, fw, wd)
     rightDownwardCurve(pen, fw, wd)
     longRightDownwardTail(pen, fw, wd)
 
@@ -363,25 +359,38 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     shortDownwardTail(pen, fw, wd)
 
-    # . (ピリオド)
+    # . (ピリオド)  ← circleBar を使わず代用するため、
+    # 縦短い短い棒で代用
     glyph = font.createChar(ord("."), "period")
     pen = glyph.glyphPen()
-    circleBar(pen, fw, wd)
+    shortVerticalBar(pen, fw, wd)
 
     # : (コロン)
     glyph = font.createChar(ord(":"), "colon")
     pen = glyph.glyphPen()
+    # 上の点
     pen.moveTo(wd*0.5, 600)
-    circleBar(pen, fw, wd)
+    pen.lineTo(wd*0.5 + fw, 600)
+    pen.lineTo(wd*0.5 + fw, 600 - fw)
+    pen.lineTo(wd*0.5, 600 - fw)
+    pen.closePath()
+    # 下の点
     pen.moveTo(wd*0.5, 300)
-    circleBar(pen, fw, wd)
+    pen.lineTo(wd*0.5 + fw, 300)
+    pen.lineTo(wd*0.5 + fw, 300 - fw)
+    pen.lineTo(wd*0.5, 300 - fw)
+    pen.closePath()
 
     # ; (セミコロン)
     glyph = font.createChar(ord(";"), "semicolon")
     pen = glyph.glyphPen()
+    # 上の点
     pen.moveTo(wd*0.5, 600)
-    circleBar(pen, fw, wd)
-    pen.moveTo(wd*0.5, 300)
+    pen.lineTo(wd*0.5 + fw, 600)
+    pen.lineTo(wd*0.5 + fw, 600 - fw)
+    pen.lineTo(wd*0.5, 600 - fw)
+    pen.closePath()
+    # 下の尾
     shortDownwardTail(pen, fw, wd)
 
     # - (ハイフン)
@@ -422,22 +431,21 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("%"), "percent")
     pen = glyph.glyphPen()
     shortForwardslashBar(pen, fw, wd)
-    leftCircle(pen, fw, wd)
-    rightCircle(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
 
     # & (アンパサンド)
     glyph = font.createChar(ord("&"), "ampersand")
     pen = glyph.glyphPen()
-    leftCircle(pen, fw, wd)
-    downwardCurve(pen, fw, wd)
+    shortConnectcurveBar(pen, fw, wd)
+    downwardDoublecurve(pen, fw, wd)
     shortRightDownwardTail(pen, fw, wd)
 
     # * (アスタリスク)
     glyph = font.createChar(ord("*"), "asterisk")
     pen = glyph.glyphPen()
-    shortHorizontalBar(pen, fw, wd)
-    shortVerticalBar(pen, fw, wd)
     shortRightConnectcurveBar(pen, fw, wd)
+    upwardCurve(pen, fw, wd)
+    shortUpwardTail(pen, fw, wd)
 
     # ( (左括弧)
     glyph = font.createChar(ord("("), "parenleft")
