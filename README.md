@@ -2,6 +2,7 @@
 https://konnitiwa768.github.io/Astedmm/A.html
 https://gemini.google.com
 い
+https://scratch.mit.edu
 live at https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/out/ttf/lakof-regular.ttf
 
 https://konnitiwa768.github.io/xefasic-dabeka-pado-tolxolfe/out/ttf/lakof-regular.ttf
