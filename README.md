@@ -1,5 +1,9 @@
 # xefasic-dabeka-pado-tofxolfe
+https://konnitiwa768.github.io/Astedmm/A.html
 
+い
+
+https://konnitiwa768.github.io/xefasic-dabeka-pado-tolxolfe/out/ttf/lakof-regular.ttf
 xefasic neda sadabek tofxolfe;. tofxolfe; de'dabeka nedo sagek nef "lakof".
 # -------------------------------------------------- importゾーン --------------------------------------------------
 https://chatgpt.com
