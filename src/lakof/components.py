@@ -31,21 +31,21 @@ def av(number1, number2):
 
 # 名前は、「長さ, 位置, 形状, 種類」の順に統一！
 # とにかく時計回りに描く！
-def circleBar(pen, cx=300, cy=500, r=100):
+#　def circleBar(pen, cx=300, cy=500, r=100):
     """
     円形のバーを描画する
     pen: glyph.glyphPen()などで取得したPenオブジェクト
     cx, cy: 円の中心座標
     r: 半径
     """
-    from math import pi, cos, sin
-    pen.moveTo((cx + r, cy))
-    for i in range(1, 9):
-        angle = pi * 2 * (i / 8)
-        x = cx + r * cos(angle)
-        y = cy + r * sin(angle)
-        pen.lineTo((x, y))
-    pen.closePath()
+   # from math import pi, cos, sin
+   # pen.moveTo((cx + r, cy))
+   # for i in range(1, 9):
+  #      angle = pi * 2 * (i / 8)
+   #     x = cx + r * cos(angle)
+   #     y = cy + r * sin(angle)
+  #      pen.lineTo((x, y))
+ #   pen.closePath()
 # 短縦棒
 def shortVerticalBar(p, fw, wd):
     p.moveTo((0, 0))
