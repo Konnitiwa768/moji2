@@ -1,5 +1,5 @@
 # xefasic-dabeka-pado-tofxolfe
-https://konnitiwa768.github.io/Astedmm/U.html
+https://konnitiwa768.github.io/Ustedmm/A.html
 https://gemini.google.com
 い
 https://scratch.mit.edu
