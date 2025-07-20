@@ -183,18 +183,14 @@ def lakof_generator(font, weight):
 
     # -- 大文字 A-Z （小文字の複製） --
 
-    # 大文字 A-Z は小文字をアウトラインごと複製
-
     for c in range(ord('A'), ord('Z') + 1):
-    uppercase = font.createChar(c, chr(c))
-    lowercase = font[chr(c + 32)]
-    # 小文字のアウトラインを取得
-    layer = lowercase.foreground
-    # 大文字のグリフにクリアしてからアウトラインをコピー
-    uppercase.clear()
-    # アウトラインを追加（複製）
-    for contour in layer:
-        new_contour = uppercase.foreground.appendContour(contour)
+        lowercase = chr(c + 32)
+        glyph_upper = font.createChar(c, chr(c))
+        glyph_lower = font[lowercase]
+        glyph_upper.clear()  # 既存のアウトラインを消去
+        for contour in glyph_lower.foreground:
+            glyph_upper.foreground.appendContour(contour)
+        glyph_upper.width = glyph_lower.width
 
     # -- 記号類 --
 
