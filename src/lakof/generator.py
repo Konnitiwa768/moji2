@@ -469,7 +469,7 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("}"), "braceright")
     pen = glyph.glyphPen()
     upwardDoublecurve(pen, fw, wd)
-    shortLeftConnectcurveBar(pen, fw, wd)
+    shortConnectcurveBar(pen, fw, wd)
 
     # < (小なり)
     glyph = font.createChar(ord("<"), "less")
