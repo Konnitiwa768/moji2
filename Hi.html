@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>古代碑文：Aliceの章（アップロード付き）</title>
+  <style>
+    @font-face {
+      font-family: 'Lakof';
+      src: url('out/ttf/lakof-regular.ttf') format('truetype');
+    }
+
+    body {
+      background: linear-gradient(145deg, #e8e2d0, #c2b59b);
+      font-family: 'Lakof', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .inscription-container {
+      background: linear-gradient(to bottom, #fefefe, #dcd3c2);
+      border: 6px double #8c7a60;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .inscription {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #444;
+      white-space: pre-wrap;
+      text-shadow:
+        1px 1px 0 #aaa,
+        -1px -1px 0 #fff,
+        2px 2px 2px rgba(0, 0, 0, 0.2);
+      mix-blend-mode: multiply;
+    }
+
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    #status {
+      margin-top: 10px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>古代碑文：Aliceの章</h2>
+
+  <div id="inscription-container" class="inscription-container">
+    <div id="inscription" class="inscription">
+Alice iz zelarbin suc zavonin te ikt to sel, amorrushmakonkta.  
+a aing, zva iz zavonin te menar-bilb o'ardn mueed.  
+lee ilagen sung chaikin illu.  
+"ilagen sung chaikin illu-bilb iz mucioul" alis lethkta.  
+leesuc Alice lithor-ing hilee-been von ser rinar hini gar hilee hillee mendokusee, paizellta (chenu suc oton, urdu lendy.)  
+lee ir, pec-maik fadarl sar nal-felta thas madda futtuuta.  
+Alice sar thas darl sar "doushau! doushau!" chikok" ginn okasi lethkna.  
+(phichuzelna, hini natur to lethkta.)  
+hini thas darl sar lar Chokki pokketchule zymile (Kaichudokei) to lye haa, pankik,  
+Alice hya, ngo Chokki-pokket ork myzile fir iz nirank'a f'a fest zygylagyly darl vaga danaj lem-darl-thu-uuy vee ngl'ngl sar ya.  
+hax oddee, Alice sung lee phica von ayayayay vee.  
+donq hsin zelarna.  
+darl-uuy, venneel, thaschule lappen Zudon ugi, cthuktuk lappen,  
+Alice essi-iml olba, fest ush aan ikii bengeel ugi nenkta.
+    </div>
+  </div>
+
+  <div>
+    <input id="username" placeholder="GitHubユーザー名">
+    <input id="repo" placeholder="リポジトリ名 (例: my-repo)">
+    <input id="pat" placeholder="GitHub Personal Access Token">
+    <input id="filename" value="inscription.png" placeholder="画像ファイル名">
+    <button onclick="uploadInscription()">画像生成＋アップロード</button>
+    <div id="status"></div>
+  </div>
+
+  <!-- html2canvas CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <script>
+    async function uploadInscription() {
+      const status = document.getElementById('status');
+      status.innerText = "📸 画像を生成中...";
+
+      const container = document.getElementById('inscription-container');
+      const canvas = await html2canvas(container, { backgroundColor: null });
+      const dataUrl = canvas.toDataURL("image/png");
+      const base64Image = dataUrl.replace(/^data:image\/png;base64,/, "");
+
+      const username = document.getElementById("username").value;
+      const repo = document.getElementById("repo").value;
+      const pat = document.getElementById("pat").value;
+      const filename = document.getElementById("filename").value || "inscription.png";
+
+      const url = `https://api.github.com/repos/${username}/${repo}/contents/images/${filename}`;
+      const payload = {
+        message: "Add inscription image",
+        content: base64Image
+      };
+
+      const headers = {
+        "Authorization": `token ${pat}`,
+        "Accept": "application/vnd.github.v3+json"
+      };
+
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: headers,
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        const json = await res.json();
+        status.innerHTML = `✅ アップロード成功！<br><a href="${json.content.html_url}" target="_blank">${json.content.path}</a>`;
+      } else {
+        const err = await res.json();
+        status.innerHTML = `❌ アップロード失敗: ${res.status}<br>${err.message}`;
+      }
+    }
+  </script>
+
+</body>
+</html>
