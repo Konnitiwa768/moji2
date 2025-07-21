@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>古代碑文：Aliceの章（完全版）</title>
+  <meta charset="UTF-8" />
+  <title>古代碑文：Aliceの章（html2canvas Promise版）</title>
   <style>
-    /* 自作フォント読み込み */
     @font-face {
       font-family: 'Lakof';
       src: url('out/ttf/lakof-regular.ttf') format('truetype');
@@ -61,12 +60,13 @@
       margin-top: 12px;
       font-family: sans-serif;
       line-height: 1.4;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
 
-  <h2>古代碑文：Aliceの章（完全版）</h2>
+  <h2>古代碑文：Aliceの章（html2canvas Promise版）</h2>
 
   <div id="insc-wrap">
     <div id="inscription">
@@ -88,67 +88,71 @@ Alice essi-iml olba, fest ush aan ikii bengeel ugi nenkta.
   </div>
 
   <div class="controls">
-    <input id="username" placeholder="GitHubユーザー名">
-    <input id="repo" placeholder="リポジトリ名（例: my-repo）">
-    <input id="pat" placeholder="Personal Access Token">
-    <input id="filename" value="inscription.png" placeholder="ファイル名">
+    <input id="username" placeholder="GitHubユーザー名" />
+    <input id="repo" placeholder="リポジトリ名（例: my-repo）" />
+    <input id="pat" placeholder="Personal Access Token" />
+    <input id="filename" value="inscription.png" placeholder="ファイル名" />
     <button id="uploadBtn">画像生成＋アップロード</button>
     <div id="status"></div>
   </div>
 
-  <!-- html2canvas の読み込み（最新安定版） -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script>
-    document.getElementById('uploadBtn').addEventListener('click', async () => {
+    document.getElementById('uploadBtn').addEventListener('click', function() {
       const status = document.getElementById('status');
-      status.innerText = "📸 画像を生成中…";
-      try {
-        // キャプチャ対象
-        const wrap = document.getElementById('insc-wrap');
-        // html2canvas でレンダリング
-        const canvas = await html2canvas(wrap, { backgroundColor: null, scale: 2 });
-        // Blob に変換
-        canvas.toBlob(async blob => {
-          // base64 文字列を作成
-          const base64 = await new Promise(resolve => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result.split(',')[1]);
-            reader.readAsDataURL(blob);
-          });
-          // ユーザー入力取得
-          const username = document.getElementById("username").value.trim();
-          const repo = document.getElementById("repo").value.trim();
-          const token = document.getElementById("pat").value.trim();
-          const filename = document.getElementById("filename").value.trim() || "inscription.png";
-          if (!username || !repo || !token) {
-            status.innerText = "❌ ユーザー名・リポジトリ名・PAT は必須です。";
-            return;
-          }
-          // GitHub API エンドポイント
-          const url = `https://api.github.com/repos/${username}/${repo}/contents/images/${filename}`;
-          // PUT リクエスト
-          const res = await fetch(url, {
-            method: 'PUT',
-            headers: {
-              "Authorization": `token ${token}`,
-              "Accept": "application/vnd.github.v3+json"
-            },
-            body: JSON.stringify({
-              message: "Add inscription image",
-              content: base64
-            })
-          });
-          if (res.ok) {
-            const data = await res.json();
-            status.innerHTML = `✅ アップロード成功！<br><a href="${data.content.html_url}" target="_blank">${data.content.path}</a>`;
-          } else {
-            const err = await res.json();
-            status.innerText = `❌ アップロード失敗: ${res.status} ${err.message}`;
-          }
+      status.textContent = '📸 画像を生成中…';
+
+      const wrap = document.getElementById('insc-wrap');
+      html2canvas(wrap, { backgroundColor: null, scale: 2 }).then(function(canvas) {
+        // canvasをbodyに追加して確認したい場合はここでappendChild可能
+        // document.body.appendChild(canvas);
+
+        canvas.toBlob(function(blob) {
+          const reader = new FileReader();
+          reader.onloadend = function() {
+            const base64 = reader.result.split(',')[1];
+
+            const username = document.getElementById('username').value.trim();
+            const repo = document.getElementById('repo').value.trim();
+            const token = document.getElementById('pat').value.trim();
+            const filename = document.getElementById('filename').value.trim() || 'inscription.png';
+
+            if (!username || !repo || !token) {
+              status.textContent = '❌ ユーザー名・リポジトリ名・PAT は必須です。';
+              return;
+            }
+
+            const url = `https://api.github.com/repos/${username}/${repo}/contents/images/${filename}`;
+
+            fetch(url, {
+              method: 'PUT',
+              headers: {
+                'Authorization': 'token ' + token,
+                'Accept': 'application/vnd.github.v3+json',
+              },
+              body: JSON.stringify({
+                message: 'Add inscription image',
+                content: base64,
+              }),
+            }).then(function(res) {
+              if (res.ok) {
+                return res.json();
+              } else {
+                return res.json().then(function(err) {
+                  throw new Error(err.message || 'アップロード失敗');
+                });
+              }
+            }).then(function(data) {
+              status.innerHTML = `✅ アップロード成功！<br><a href="${data.content.html_url}" target="_blank">${data.content.path}</a>`;
+            }).catch(function(err) {
+              status.textContent = '❌ エラー: ' + err.message;
+            });
+          };
+          reader.readAsDataURL(blob);
         }, 'image/png');
-      } catch (e) {
-        status.innerText = `❌ エラーが発生しました: ${e.message}`;
-      }
+      }).catch(function(err) {
+        status.textContent = '❌ 画像生成失敗: ' + err.message;
+      });
     });
   </script>
 
