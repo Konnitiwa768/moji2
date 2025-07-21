@@ -7,13 +7,13 @@ https://konnitiwa768.github.io/Astedmm/A.html
 i
 
 
-https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/Hi2.html
+https://konnitiwa768.github.io/moji2/Hi2.html
 https://gemini.google.com
 い
 https://github.com/konnitiwa768/astedmm
 https://scratch.mit.edu
-live at https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/out/ttf/lakof-regular.ttf
-https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/A.html
+live at https://konnitiwa768.github.io/moji2/out/ttf/lakof-regular.ttf
+https://konnitiwa768.github.io/moji2/A.html
 
 https://konnitiwa768.github.io/xefasic-dabeka-pado-tolxolfe/out/ttf/lakof-regular.ttf
 xefasic neda sadabek tofxolfe;. tofxolfe; de'dabeka nedo sagek nef "lakof".
