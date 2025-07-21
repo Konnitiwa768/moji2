@@ -479,7 +479,8 @@ def lakof_generator(font, weight):
     # > (大なり)
     glyph = font.createChar(ord(">"), "greater")
     pen = glyph.glyphPen()
-    shortRightUpwardTail(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)
+    shortRightDownwardTail(pen, fw, wd)
 
     # = (イコール)
     glyph = font.createChar(ord("="), "equal")
