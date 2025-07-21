@@ -21,6 +21,7 @@ def lakof_generator(font, weight):
         pen = glyph.glyphPen()
         for shape in shapes:
             shape(pen, fw, wd)
+        glyph.width = wd
 
     # -- 小文字 a-z --
     draw_char("a", "a", leftCircle, rightCircle)
@@ -50,9 +51,20 @@ def lakof_generator(font, weight):
     draw_char("y", "y", leftCircle, shortestLowerrightCircle, shortAboveVerticalBar)
     draw_char("z", "z", shortConnectcurveBar, downwardCurve, longDownwardTail)
 
-    # -- 大文字 A-Z --
+    # -- 大文字 A-Z（小文字から参照コピー） --
     for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-        draw_char(ch, ch, *font[ord(ch.lower())].foreground.references)
+        lowercase = ch.lower()
+        src = font[ord(lowercase)]
+        if src.references:
+            # 参照を持つ場合（例：コンポジット）
+            dst = font.createChar(ord(ch), ch)
+            dst.references = list(src.references)
+            dst.width = src.width
+        else:
+            # シンプルなパスの場合、輪郭をコピー
+            dst = font.createChar(ord(ch), ch)
+            dst.foreground = src.foreground.copy()
+            dst.width = src.width
 
     # -- 記号類 --
     draw_char("!", "exclamation", shortVerticalBar, shortDownwardTail)
@@ -60,7 +72,8 @@ def lakof_generator(font, weight):
     draw_char(",", "comma", shortDownwardTail)
     draw_char(".", "period", shortVerticalBar)
     draw_char("-", "hyphen", shortHorizontalBar)
-    draw_char("_", "underscore", lambda pen, fw, wd: (pen.moveTo((0,100)), pen.lineTo((wd,100)), pen.closePath()))
+    draw_char("_", "underscore", lambda pen, fw, wd: (
+        pen.moveTo((0, 100)), pen.lineTo((wd, 100)), pen.closePath()))
     draw_char("@", "at", leftCircle, rightCircle, shortRightConnectcurveBar, shortUpwardTail)
     draw_char("#", "numbersign", shortVerticalBar, shortHorizontalBar, shortRightConnectcurveBar)
     draw_char("$", "dollar", shortVerticalBar, downwardCurve, shortRightConnectcurveBar)
@@ -75,19 +88,21 @@ def lakof_generator(font, weight):
     draw_char("}", "braceright", downwardDoublecurve, upwardDoublecurve)
     draw_char("<", "less", shortForwardslashBar, shortRightDownwardTail)
     draw_char(">", "greater", shortRightConnectcurveBar, shortLeftDownwardTail)
-    draw_char("=", "equal", shortHorizontalBar, lambda pen, fw, wd: (pen.moveTo((0,300)), pen.lineTo((wd,300)), pen.closePath()))
+    draw_char("=", "equal",
+              shortHorizontalBar,
+              lambda pen, fw, wd: (pen.moveTo((0, 300)), pen.lineTo((wd, 300)), pen.closePath()))
 
     # -- コロン・セミコロン --
     def colon(pen, fw, wd):
-        pen.moveTo((wd*0.5, 600))
-        pen.lineTo((wd*0.5 + fw, 600))
-        pen.lineTo((wd*0.5 + fw, 600 - fw))
-        pen.lineTo((wd*0.5, 600 - fw))
+        pen.moveTo((wd * 0.5, 600))
+        pen.lineTo((wd * 0.5 + fw, 600))
+        pen.lineTo((wd * 0.5 + fw, 600 - fw))
+        pen.lineTo((wd * 0.5, 600 - fw))
         pen.closePath()
-        pen.moveTo((wd*0.5, 300))
-        pen.lineTo((wd*0.5 + fw, 300))
-        pen.lineTo((wd*0.5 + fw, 300 - fw))
-        pen.lineTo((wd*0.5, 300 - fw))
+        pen.moveTo((wd * 0.5, 300))
+        pen.lineTo((wd * 0.5 + fw, 300))
+        pen.lineTo((wd * 0.5 + fw, 300 - fw))
+        pen.lineTo((wd * 0.5, 300 - fw))
         pen.closePath()
 
     draw_char(":", "colon", colon)
