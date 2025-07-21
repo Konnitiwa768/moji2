@@ -6,6 +6,10 @@ https://konnitiwa768.github.io/Astedmm/A.html
 
 i
 
+https://konnitiwa768.github.io/moji2/images/inscription.png
+
+i
+
 
 https://konnitiwa768.github.io/moji2/Hi2.html
 https://gemini.google.com
