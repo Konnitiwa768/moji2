@@ -2,7 +2,7 @@
 
 i
 
-https://konnitiwa768.github.io/Astedmm/A.html
+https://konnitiwa768.github.io/Astedmm/Hi.html
 
 i
 
