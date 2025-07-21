@@ -2,12 +2,12 @@
 
 i
 
-https://konnitiwa768.github.io/Astedmm/Hi.html
+https://konnitiwa768.github.io/Astedmm/A.html
 
 i
 
 
-https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/Ep.html
+https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/Hi.html
 https://gemini.google.com
 い
 https://github.com/konnitiwa768/astedmm
