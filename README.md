@@ -1,6 +1,9 @@
 # xefasic-dabeka-pado-tofxolfe
-https://konnitiwa768.github.ioA/Astedmm/A.html
-https://konnitiwa768.github.ioA/Astedmm/Ep.html
+
+i
+
+https://konnitiwa768.github.io/Astedmm/A.html
+https://konnitiwa768.github.io/Astedmm/Ep.html
 https://gemini.google.com
 い
 https://github.com/konnitiwa768/astedmm
