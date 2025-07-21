@@ -7,7 +7,7 @@ https://konnitiwa768.github.io/Astedmm/A.html
 i
 
 
-https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/Hi3.html
+https://konnitiwa768.github.io/xefasic-dabeka-pado-tofxolfe/Hi.html
 https://gemini.google.com
 い
 https://github.com/konnitiwa768/astedmm
