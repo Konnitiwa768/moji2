@@ -317,7 +317,7 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("X"), "X")
     pen = glyph.glyphPen()
     shortConnectcurveBar(pen, fw, wd)
-    longHorizontalBar(pen, fw, wd)
+    shortHorizontalBar(pen, fw, wd)
 
     glyph = font.createChar(ord("Y"), "Y")
     pen = glyph.glyphPen()
