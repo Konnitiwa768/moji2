@@ -5,7 +5,7 @@ i
 https://konnitiwa768.github.io/Astedmm/A.html
 
 i
-
+https://zpdic.ziphil.com/dictionary/1696
 https://konnitiwa768.github.io/moji2/images/inscription.png
 
 i
