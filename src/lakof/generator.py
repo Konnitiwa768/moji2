@@ -203,7 +203,7 @@ def lakof_generator(font, weight):
     pen = glyph.glyphPen()
     leftCircle(pen, fw, wd)
     shortestUpperrightCircle(pen, fw, wd)
-    shortLowerrightCircle(pen, fw, wd)
+    shortestLowerrightCircle(pen, fw, wd)
 
     glyph = font.createChar(ord("F"), "F")
     pen = glyph.glyphPen()
