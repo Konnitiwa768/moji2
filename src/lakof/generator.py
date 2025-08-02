@@ -178,8 +178,7 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("A"), "A")
     pen = glyph.glyphPen()
     leftCircle(pen, fw, wd)
-    shortHorizontalBar(pen, fw, wd)
-    shortUpwardTail(pen, fw, wd)
+    rightCircle(pen, fw, wd)  # 変更
 
     glyph = font.createChar(ord("B"), "B")
     pen = glyph.glyphPen()
@@ -202,9 +201,9 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("E"), "E")
     pen = glyph.glyphPen()
-    rightCircle(pen, fw, wd)
-    shortestLowerrightCircle(pen, fw, wd)
-    shortUpwardTail(pen, fw, wd)
+    leftCircle(pen, fw, wd)
+    shortestUpperrightCircle(pen, fw, wd)
+    shortLowerrightCircle(pen, fw, wd)
 
     glyph = font.createChar(ord("F"), "F")
     pen = glyph.glyphPen()
@@ -226,7 +225,7 @@ def lakof_generator(font, weight):
     glyph = font.createChar(ord("I"), "I")
     pen = glyph.glyphPen()
     shortestUpperleftCircle(pen, fw, wd)
-    shortHorizontalBar(pen, fw, wd)
+    rightCircle(pen, fw, wd)
     iTail(pen, fw, wd)
 
     glyph = font.createChar(ord("J"), "J")
