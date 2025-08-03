@@ -37,11 +37,10 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("d"), "d")
     pen = glyph.glyphPen()
-    upwardCurve(pen, fw, wd)
-    longUpwardTail(pen, fw, wd)
-    shortRightConnectcurveBar(pen, fw, wd)
-    rightDownwardCurve(pen, fw, wd)
-    shortRightDownwardTail(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortestUpperleftCircle(pen, fw, wd)
+    shortBelowVerticalBar(pen, fw, wd)
+
 
     glyph = font.createChar(ord("e"), "e")
     pen = glyph.glyphPen()
@@ -194,11 +193,10 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("D"), "D")
     pen = glyph.glyphPen()
-    upwardCurve(pen, fw, wd)
-    longUpwardTail(pen, fw, wd)
-    shortRightConnectcurveBar(pen, fw, wd)
-    rightDownwardCurve(pen, fw, wd)
-    shortRightDownwardTail(pen, fw, wd)
+    rightCircle(pen, fw, wd)
+    shortestUpperleftCircle(pen, fw, wd)
+    shortBelowVerticalBar(pen, fw, wd)
+
 
     glyph = font.createChar(ord("E"), "E")
     pen = glyph.glyphPen()
