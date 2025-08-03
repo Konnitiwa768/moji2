@@ -167,11 +167,7 @@ def lakof_generator(font, weight):
     shortestLowerrightCircle(pen, fw, wd)
     shortAboveVerticalBar(pen, fw, wd)
 
-    glyph = font.createChar(ord("z"), "z")
-    pen = glyph.glyphPen()
-    downwardDoublecurve(pen, fw, wd)
-    shortLeftDownwardTail(pen, fw, wd)
-    shortRightConnectcurveBar(pen, fw, wd)
+    
 
     # -- 大文字 A-Z --
 
@@ -326,12 +322,17 @@ def lakof_generator(font, weight):
 
     glyph = font.createChar(ord("Z"), "Z")
     pen = glyph.glyphPen()
-    downwardDoublecurve(pen, fw, wd)
-    shortLeftDownwardTail(pen, fw, wd)
-    shortRightConnectcurveBar(pen, fw, wd)
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    longDownwardTail(pen, fw, wd)
 
-    # -- 記号類 --
 
+
+    glyph = font.createChar(ord("z"), "z")
+    pen = glyph.glyphPen()
+    shortConnectcurveBar(pen, fw, wd)
+    downwardCurve(pen, fw, wd)
+    longDownwardTail(pen, fw, wd)
     # ! (感嘆符)
     glyph = font.createChar(ord("!"), "exclamation")
     pen = glyph.glyphPen()
