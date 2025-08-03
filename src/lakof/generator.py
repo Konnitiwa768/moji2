@@ -286,7 +286,7 @@ def lakof_generator(font, weight):
     downwardDoublecurve(pen, fw, wd)
     longRightDownwardTail(pen, fw, wd)
 
-    
+    glyph = font.createChar(ord("S"), "S")
     pen = glyph.glyphPen()
     longVerticalBar(pen, fw, wd)
     shortHorizontalBar(pen, fw, wd)
