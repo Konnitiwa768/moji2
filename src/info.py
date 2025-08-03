@@ -22,6 +22,9 @@ class font_info:
         if self.name == lk:
             if self.weight == t:
                 lakof_generator(font, "Thin")
+            
+            if self.weight == n:
+                lakof_generator(font, "Normal")
 
             if self.weight == r:
                 lakof_generator(font, "Regular")
@@ -44,6 +47,7 @@ lk = "lakof"
 
 # フォントの太さ
 t = "Thin"
+n = "Normal"
 r = "Regular"
 b = "Bold"
 
