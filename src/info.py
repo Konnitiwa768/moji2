@@ -54,5 +54,5 @@ b = "Bold"
 lkt = font_info(lk, t)
 lkr = font_info(lk, r)
 lkb = font_info(lk, b)
-
-fontfamily_list = [lkt, lkr, lkb]
+lkn = font_info(lk, n)
+fontfamily_list = [lkt, lkr, lkb, lkn]
