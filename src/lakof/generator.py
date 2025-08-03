@@ -4,6 +4,8 @@ from lakof.components import *
 def lakof_generator(font, weight):
     if weight == "Thin":
         fontweight = 50
+    elif weight == "Normal":
+         fontweight = 75
     elif weight == "Regular":
         fontweight = 100
     elif weight == "Bold":
@@ -267,7 +269,7 @@ def lakof_generator(font, weight):
     shortHorizontalBar(pen, fw, wd)
     rightCircle(pen, fw, wd)
 
-    glyph = font.createChar(ord("p"), "p")
+    glyph = font.createChar(ord("P"), "P")
     pen = glyph.glyphPen()
     symmetricalCurve(pen, fw, wd)
     shortRightConnectcurveBar(pen, fw, wd)
