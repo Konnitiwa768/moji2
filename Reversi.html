@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>8x8 リバーシ</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      text-align: center;
+      vertical-align: middle;
+      background-color: green;
+      cursor: pointer;
+    }
+    .black {
+      background-color: black;
+      border-radius: 50%;
+      width: 80%;
+      height: 80%;
+      margin: auto;
+    }
+    .white {
+      background-color: white;
+      border-radius: 50%;
+      width: 80%;
+      height: 80%;
+      margin: auto;
+    }
+    button {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>8x8 リバーシ</h1>
+  <p>現在のターン: <span id="turn"></span></p>
+  <p>黒: <span id="blackCount">2</span> 白: <span id="whiteCount">2</span></p>
+  <p id="winner"></p>
+  <button onclick="passTurn()">パス</button>
+  <button onclick="resetGame()">リセット</button>
+  <table id="board"></table>
+
+  <script>
+    const boardSize = 8;
+    let board = [];
+    const directions = [
+      [-1, -1], [-1, 0], [-1, 1],
+      [0, -1],          [0, 1],
+      [1, -1], [1, 0], [1, 1]
+    ];
+
+    let currentPlayer;
+    const table = document.getElementById('board');
+
+    function initializeBoard() {
+      table.innerHTML = '';
+      board = [];
+      for (let y = 0; y < boardSize; y++) {
+        board[y] = [];
+        const row = table.insertRow();
+        for (let x = 0; x < boardSize; x++) {
+          board[y][x] = null;
+          const cell = row.insertCell();
+          cell.dataset.x = x;
+          cell.dataset.y = y;
+          cell.addEventListener('click', handleClick);
+        }
+      }
+
+      // 初期配置
+      placeDisc(3, 3, 'white');
+      placeDisc(4, 4, 'white');
+      placeDisc(3, 4, 'black');
+      placeDisc(4, 3, 'black');
+
+      // ランダムに先手決定
+      currentPlayer = Math.random() < 0.5 ? 'black' : 'white';
+      updateTurnDisplay();
+      updateCounts();
+      document.getElementById('winner').textContent = '';
+    }
+
+    function placeDisc(x, y, color) {
+      board[y][x] = color;
+      const cell = table.rows[y].cells[x];
+      cell.innerHTML = `<div class="${color}"></div>`;
+    }
+
+    function handleClick(event) {
+      const x = parseInt(event.currentTarget.dataset.x);
+      const y = parseInt(event.currentTarget.dataset.y);
+      if (board[y][x] !== null) return;
+
+      const flipped = getFlippableDiscs(x, y, currentPlayer);
+      if (flipped.length === 0) return;
+
+      placeDisc(x, y, currentPlayer);
+      flipped.forEach(([fx, fy]) => placeDisc(fx, fy, currentPlayer));
+
+      updateCounts();
+
+      switchTurn();
+    }
+
+    function getFlippableDiscs(x, y, color) {
+      const opponent = color === 'black' ? 'white' : 'black';
+      const result = [];
+
+      for (let [dx, dy] of directions) {
+        let nx = x + dx;
+        let ny = y + dy;
+        const temp = [];
+
+        while (nx >= 0 && ny >= 0 && nx < boardSize && ny < boardSize) {
+          if (board[ny][nx] === opponent) {
+            temp.push([nx, ny]);
+          } else if (board[ny][nx] === color) {
+            result.push(...temp);
+            break;
+          } else {
+            break;
+          }
+          nx += dx;
+          ny += dy;
+        }
+      }
+      return result;
+    }
+
+    function updateCounts() {
+      let black = 0, white = 0;
+      for (let row of board) {
+        for (let cell of row) {
+          if (cell === 'black') black++;
+          if (cell === 'white') white++;
+        }
+      }
+      document.getElementById('blackCount').textContent = black;
+      document.getElementById('whiteCount').textContent = white;
+    }
+
+    function updateTurnDisplay() {
+      document.getElementById('turn').textContent = currentPlayer === 'black' ? '黒' : '白';
+    }
+
+    function hasValidMove(color) {
+      for (let y = 0; y < boardSize; y++) {
+        for (let x = 0; x < boardSize; x++) {
+          if (board[y][x] === null && getFlippableDiscs(x, y, color).length > 0) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function switchTurn() {
+      currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+      updateTurnDisplay();
+
+      if (!hasValidMove(currentPlayer)) {
+        alert(`${currentPlayer === 'black' ? '黒' : '白'} は打てる場所がありません。パスします。`);
+        currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+        updateTurnDisplay();
+
+        if (!hasValidMove(currentPlayer)) {
+          declareWinner();
+        }
+      }
+    }
+
+    function declareWinner() {
+      const black = parseInt(document.getElementById('blackCount').textContent);
+      const white = parseInt(document.getElementById('whiteCount').textContent);
+      const winnerText = black > white ? '黒の勝ち！' : white > black ? '白の勝ち！' : '引き分け！';
+      document.getElementById('winner').textContent = winnerText;
+    }
+
+    function passTurn() {
+      if (hasValidMove(currentPlayer)) {
+        alert("打てる場所があります。パスできません。");
+        return;
+      }
+      currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+      updateTurnDisplay();
+    }
+
+    function resetGame() {
+      initializeBoard();
+    }
+
+    initializeBoard();
+  </script>
+</body>
+</html>
