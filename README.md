@@ -3,7 +3,7 @@ https://google.com
 i
 
 https://github.com/Sakalt
-https://github.com/Sakalt/hotal-font
+https://github.com/konnitiwa768/hotal-font
 
 https://konnitiwa768.github.io/Astedmm/A.html
 
