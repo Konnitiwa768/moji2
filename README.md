@@ -2,7 +2,7 @@
 https://google.com
 i
 
-https://github.com/Sakalti
+https://github.com/Sakalt
 
 
 https://konnitiwa768.github.io/Astedmm/A.html
